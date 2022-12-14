@@ -1647,6 +1647,7 @@ MonoBehaviour:
   _maxHp: 30
   target: {fileID: 0}
   data: {fileID: 11400000, guid: aa78d09275d99ea47aa91ba0a85e2efc, type: 2}
+  _attackRate: 1
 --- !u!1 &4530003306004163420
 GameObject:
   m_ObjectHideFlags: 0

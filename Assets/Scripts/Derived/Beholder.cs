@@ -17,20 +17,31 @@ public class Beholder : MonsterObject
         base.OnEnable();
 
         _sphereCollider.enabled = true;
+
+        _prevAttackTime = 0f;
     }
 
     protected override void Update()
     {
         base.Update();
 
-        _animator.SetBool(AnimatorID.IsWalking, isWalking);
+        _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
+        if (hasTarget &&
+            Vector3.Distance(target.transform.position, transform.position) <= data.stoppingDistance + 1f &&
+            Time.time - _prevAttackTime >= _attackRate)
+        {
+            _prevAttackTime = Time.time;
+            _animator.SetInteger(AnimatorID.Int.Attack, Random.Range(0, _attackMotionCount));
+        }
+        else
+            _animator.SetInteger(AnimatorID.Int.Attack, -1);
     }
 
     public override void GetDamage(float damageAmount)
     {
         base.GetDamage(damageAmount);
 
-        _animator.SetTrigger(AnimatorID.Hit);
+        _animator.SetTrigger(AnimatorID.Trigger.Hit);
     }
 
     protected override void Die()
@@ -38,9 +49,14 @@ public class Beholder : MonsterObject
         base.Die();
 
         _sphereCollider.enabled = false;
-        _animator.SetTrigger(AnimatorID.Die);
+        _animator.SetTrigger(AnimatorID.Trigger.Die);
         //gameObject.SetActive(false);
     }
 
+    [SerializeField]
+    float _attackRate = 1f;
+
     SphereCollider _sphereCollider;
+    float _prevAttackTime = 0f;
+    readonly int _attackMotionCount = 2;
 }

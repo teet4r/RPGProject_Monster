@@ -23,19 +23,14 @@ public class ChestMonster : MonsterObject
     {
         base.Update();
 
-        _animator.SetBool(AnimatorID.IsWalking, isWalking);
-    }
-
-    public virtual void Attack()
-    {
-
+        _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
     }
 
     public override void GetDamage(float damageAmount)
     {
         base.GetDamage(damageAmount);
 
-        _animator.SetTrigger(AnimatorID.Hit);
+        _animator.SetTrigger(AnimatorID.Trigger.Hit);
     }
 
     protected override void Die()
@@ -43,7 +38,7 @@ public class ChestMonster : MonsterObject
         base.Die();
 
         _boxCollider.enabled = false;
-        _animator.SetTrigger(AnimatorID.Die);
+        _animator.SetTrigger(AnimatorID.Trigger.Die);
         //gameObject.SetActive(false);
     }
 

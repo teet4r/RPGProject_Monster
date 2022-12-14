@@ -22,6 +22,7 @@ public class MonsterObject : LifeObject
         base.OnEnable();
 
         _navMeshAgent.isStopped = false;
+        _navMeshAgent.stoppingDistance = data.stoppingDistance;
         _navMeshAgent.speed = data.moveSpeed;
         _navMeshAgent.angularSpeed = 360f;
         _navMeshAgent.acceleration = 50f;
