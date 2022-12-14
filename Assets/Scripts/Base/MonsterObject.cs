@@ -21,12 +21,10 @@ public class MonsterObject : LifeObject
     {
         base.OnEnable();
 
-        #region Set NavMeshAgent
         _navMeshAgent.isStopped = false;
-        _navMeshAgent.speed = 7f;
+        _navMeshAgent.speed = data.moveSpeed;
         _navMeshAgent.angularSpeed = 360f;
         _navMeshAgent.acceleration = 50f;
-        #endregion
     }
 
     protected override void Update()
@@ -61,13 +59,14 @@ public class MonsterObject : LifeObject
         transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
     }
 
+    #region Move Methods
     void _RushToTarget()
     {
-        _navMeshAgent.stoppingDistance = 3f;
-        _navMeshAgent.destination = _player.transform.position;
+        _navMeshAgent.stoppingDistance = data.stoppingDistance;
+        _navMeshAgent.destination = target.transform.position;
 
         // 플레이어를 쳐다봄
-        _LookAt(_player.transform.position);
+        _LookAt(target.transform.position);
     }
 
     IEnumerator _Patrol(Vector3 startPosition)
@@ -82,44 +81,21 @@ public class MonsterObject : LifeObject
             if (_navMeshAgent.remainingDistance < 0.01f)
             {
                 yield return new WaitForSeconds(Random.Range(0f, 7f));
-                _navMeshAgent.destination = _GetRandomPointOnNavMesh(transform.position, Random.Range(0f, _patrolDistance));
+                _navMeshAgent.destination = Algorithms.GetRandomPointOnNavMesh(transform.position, Random.Range(0f, data.patrolDistance));
             }
             else yield return null;
         }
     }
+    #endregion
 
-    // 내비메시 위의 랜덤한 위치를 반환하는 메서드
-    // center를 중심으로 distance 반경 안에서 랜덤한 위치를 찾는다
-    Vector3 _GetRandomPointOnNavMesh(Vector3 center, float distance)
+    public bool hasTarget { get { return target != null && target.isAlive; } }
+    public bool isRecognized // 플레이어가 시야에 들어올 때
     {
-        // center를 중심으로 반지름이 maxDistance인 구 안에서의 랜덤한 위치 하나를 저장
-        // Random.insideUnitSphere는 반지름이 1인 구 안에서의 랜덤한 한 점을 반환하는 프로퍼티
-        Vector3 randomPos = center + Random.insideUnitSphere * distance;
-
-        // 내비메시 샘플링의 결과 정보를 저장하는 변수
-        NavMeshHit hit;
-
-        // distance 반경 안에서, randomPos에 가장 가까운 내비메시 위의 한 점을 찾음
-        NavMesh.SamplePosition(randomPos, out hit, distance, NavMesh.AllAreas);
-
-        // 찾은 점 반환
-        return hit.position;
+        get { return hasTarget && Vector3.Distance(target.transform.position, transform.position) <= data.recognitionDistance; }
     }
 
-    public bool hasTarget { get { return _player != null && _player.isAlive; } }
-    public bool isRecognized
-    {
-        get { return hasTarget && Vector3.Distance(_player.transform.position, transform.position) <= _recognitionDistance; }
-    }
-
-    [Header("---Target---")]
-    [SerializeField]
-    protected Player _player = null;
-    [Header("---Variables---")]
-    [SerializeField]
-    protected float _patrolDistance = 30f;
-    [SerializeField]
-    protected float _recognitionDistance = 20f;
+    public Player target = null; // 몬스터가 따라갈 대상
+    public MonsterData data; // 몬스터 데이터 컨테이너
 
     protected Animator _animator = null;
     protected NavMeshAgent _navMeshAgent = null;

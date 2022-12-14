@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
-public class Beholder : MonsterObject
+[RequireComponent(typeof(CapsuleCollider))]
+public class BlackKnight : MonsterObject
 {
     protected override void Awake()
     {
         base.Awake();
 
-        _sphereCollider = GetComponent<SphereCollider>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        _sphereCollider.enabled = true;
+        _capsuleCollider.enabled = true;
     }
 
     protected override void Update()
@@ -37,10 +37,10 @@ public class Beholder : MonsterObject
     {
         base.Die();
 
-        _sphereCollider.enabled = false;
+        _capsuleCollider.enabled = false;
         _animator.SetTrigger(AnimatorID.Die);
         //gameObject.SetActive(false);
     }
 
-    SphereCollider _sphereCollider;
+    CapsuleCollider _capsuleCollider;
 }

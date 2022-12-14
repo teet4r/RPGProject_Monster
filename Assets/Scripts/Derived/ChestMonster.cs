@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
-public class Beholder : MonsterObject
+[RequireComponent(typeof(BoxCollider))]
+public class ChestMonster : MonsterObject
 {
     protected override void Awake()
     {
         base.Awake();
 
-        _sphereCollider = GetComponent<SphereCollider>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        _sphereCollider.enabled = true;
+        _boxCollider.enabled = true;
     }
 
     protected override void Update()
@@ -24,6 +24,11 @@ public class Beholder : MonsterObject
         base.Update();
 
         _animator.SetBool(AnimatorID.IsWalking, isWalking);
+    }
+
+    public virtual void Attack()
+    {
+
     }
 
     public override void GetDamage(float damageAmount)
@@ -37,10 +42,10 @@ public class Beholder : MonsterObject
     {
         base.Die();
 
-        _sphereCollider.enabled = false;
+        _boxCollider.enabled = false;
         _animator.SetTrigger(AnimatorID.Die);
         //gameObject.SetActive(false);
     }
 
-    SphereCollider _sphereCollider;
+    BoxCollider _boxCollider;
 }

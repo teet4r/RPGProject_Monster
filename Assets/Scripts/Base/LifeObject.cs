@@ -10,8 +10,9 @@ public class LifeObject : MonoBehaviour
     protected virtual void OnEnable()
     {
         isAlive = true;
-        curHp = maxHp;
         isWalking = false;
+        curHp = maxHp;
+
         _prevPos = transform.position;
     }
 
