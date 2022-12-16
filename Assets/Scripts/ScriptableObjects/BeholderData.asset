@@ -17,3 +17,5 @@ MonoBehaviour:
   stoppingDistance: 3
   patrolDistance: 30
   recognitionDistance: 20
+  attackRate: 1
+  attackMotionCount: 2

@@ -1543,7 +1543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4530003306004526970
 Transform:
   m_ObjectHideFlags: 0
@@ -1627,7 +1627,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4530003306004163418}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -1647,7 +1647,6 @@ MonoBehaviour:
   _maxHp: 30
   target: {fileID: 0}
   data: {fileID: 11400000, guid: aa78d09275d99ea47aa91ba0a85e2efc, type: 2}
-  _attackRate: 1
 --- !u!1 &4530003306004163420
 GameObject:
   m_ObjectHideFlags: 0

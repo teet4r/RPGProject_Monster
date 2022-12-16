@@ -10,4 +10,6 @@ public class MonsterData : ScriptableObject
     public float stoppingDistance = 3f;
     public float patrolDistance = 30f;
     public float recognitionDistance = 20f;
+    public float attackRate = 1f;
+    public int attackMotionCount = 1;
 }
