@@ -12,7 +12,6 @@ public class Player : LifeObject
     {
         base.OnEnable();
 
-        _prevHitTime = 0f;
         _isInvincible = false;
     }
     protected override void Update()
@@ -23,23 +22,25 @@ public class Player : LifeObject
     }
     void OnTriggerEnter(Collider other)
     {
-        if (!_isInvincible && other.TryGetComponent(out AttackCollider attackCollider))
-        {
-            GetDamage(attackCollider.damage);
-        }
+        if (other.TryGetComponent(out AttackCollider attackCollider))
+            StartCoroutine(_TriggerGetDamage(attackCollider.data.damage));
     }
     void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out AttackCollider attackCollider))
-        {
-            GetDamage(attackCollider.damage);
-        }
+            StartCoroutine(_TriggerGetDamage(attackCollider.data.damage));
     }
+    protected override void _Die()
+    {
+        base._Die();
 
-    IEnumerator _TriggerInvincible()
+        gameObject.SetActive(false);
+    }
+    IEnumerator _TriggerGetDamage(float damage)
     {
         if (_isInvincible) yield break;
         _isInvincible = true;
+        GetDamage(damage);
         yield return new WaitForSeconds(_invincibleTime);
         _isInvincible = false;
     }
@@ -47,5 +48,4 @@ public class Player : LifeObject
     [SerializeField] float _invincibleTime = 1f;
     MovementController _movementController = null;
     bool _isInvincible;
-    float _prevHitTime; // 이전 피격 시간
 }

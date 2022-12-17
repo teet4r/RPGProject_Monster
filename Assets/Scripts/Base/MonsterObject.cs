@@ -81,7 +81,7 @@ public class MonsterObject : LifeObject
         _bodyCollider.enabled = false;
         _animator.SetTrigger(AnimatorID.Trigger.Die);
     }
-    protected void _LookAt(Vector3 target)
+    void _LookAt(Vector3 target)
     {
         transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
     }
@@ -138,5 +138,6 @@ public class MonsterObject : LifeObject
     protected NavMeshAgent _navMeshAgent = null;
     protected Rigidbody _rigidbody = null;
     protected Coroutine _patrolCor = null;
+    [SerializeField] protected AttackCollider[] attackColliders = null;
     float _prevAttackTime = 0f;
 }

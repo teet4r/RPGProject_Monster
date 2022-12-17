@@ -32,8 +32,7 @@ public class AttackCollider : MonoBehaviour
         _FindParent(transform.parent);
     }
 
-    public float damage { get { return _damage; } }
+    public AttackColliderData data = null;
     [SerializeField] MonsterObject _parent = null;
-    [SerializeField] float _damage = 5f;
     Collider _attackCollider = null;
 }

@@ -269,6 +269,8 @@ MonoBehaviour:
   _maxHp: 50
   target: {fileID: 0}
   data: {fileID: 11400000, guid: 9ca3ca40fe7923b41bfb6b8eed730d7b, type: 2}
+  attackColliders:
+  - {fileID: 3712382193200409471}
 --- !u!1 &2219292830553907879
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,5 +963,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301464fbeb02e4d4ebe121b3c6111617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 0}
   _parent: {fileID: 316559666}
-  _damage: 5
