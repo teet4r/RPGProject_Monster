@@ -963,5 +963,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301464fbeb02e4d4ebe121b3c6111617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
   _parent: {fileID: 316559666}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41251c94281cb7548aea400f8be8db84, type: 3}
-  m_Name: BlackKnightData
+  m_Name: FlyingDemonData
   m_EditorClassIdentifier: 
-  moveSpeed: 1.5
-  damage: 25
-  stoppingDistance: 2.6
-  patrolDistance: 35
-  recognitionDistance: 25
-  attackRate: 2
-  attackMotionCount: 2
+  moveSpeed: 5
+  damage: 18
+  stoppingDistance: 3
+  patrolDistance: 40
+  recognitionDistance: 30
+  attackRate: 0.85
+  attackMotionCount: 3

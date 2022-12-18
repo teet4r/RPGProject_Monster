@@ -23,12 +23,12 @@ public class Player : LifeObject
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out AttackCollider attackCollider))
-            StartCoroutine(_TriggerGetDamage(attackCollider.data.damage));
+            StartCoroutine(_TriggerGetDamage(attackCollider.parent.data.damage));
     }
     void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out AttackCollider attackCollider))
-            StartCoroutine(_TriggerGetDamage(attackCollider.data.damage));
+            StartCoroutine(_TriggerGetDamage(attackCollider.parent.data.damage));
     }
     protected override void _Die()
     {

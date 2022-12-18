@@ -138,6 +138,5 @@ public class MonsterObject : LifeObject
     protected NavMeshAgent _navMeshAgent = null;
     protected Rigidbody _rigidbody = null;
     protected Coroutine _patrolCor = null;
-    [SerializeField] protected AttackCollider[] attackColliders = null;
     float _prevAttackTime = 0f;
 }

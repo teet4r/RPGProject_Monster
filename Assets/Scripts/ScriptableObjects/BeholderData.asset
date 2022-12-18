@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BeholderData
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  damage: 10
-  stoppingDistance: 3
+  damage: 12
+  stoppingDistance: 2.25
   patrolDistance: 30
   recognitionDistance: 20
-  attackRate: 1
+  attackRate: 1.5
   attackMotionCount: 2
