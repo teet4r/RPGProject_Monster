@@ -1792,7 +1792,7 @@ Transform:
   m_GameObject: {fileID: 1802286859466036053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1802286859466067831}
@@ -1886,7 +1886,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHp: 80
   target: {fileID: 0}
-  data: {fileID: 11400000, guid: b8e6142ffeab06642ad77ca8e1b75625, type: 2}
+  data: {fileID: 11400000, guid: 97730afe2040d0049a8325d8bb02f914, type: 2}
+  _attackClips:
+  - {fileID: 7400000, guid: 3e4c45655f766e74e9a7fbb77fb47f04, type: 3}
+  - {fileID: 7400000, guid: a3027121d0d75f64197d6f9a6896309f, type: 3}
 --- !u!1 &1802286859466036055
 GameObject:
   m_ObjectHideFlags: 0

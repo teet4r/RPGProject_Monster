@@ -6,12 +6,15 @@ using UnityEngine.AI;
 /// <summary>
 /// LifeObject를 상속하는 하위 클래스
 /// </summary>
+#region Require Components
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+#endregion
 public class MonsterObject : LifeObject
 {
+    #region Unity Messages
     protected virtual void Awake()
     {
         _bodyCollider = GetComponent<Collider>();
@@ -30,10 +33,14 @@ public class MonsterObject : LifeObject
         _bodyCollider.isTrigger = true;
         _bodyCollider.enabled = true;
 
+        _patrolCor = null;
+        _attackCor = null;
+
         _prevAttackTime = 0f;
 
         _navMeshAgent.isStopped = false;
         _navMeshAgent.stoppingDistance = data.stoppingDistance;
+        _navMeshAgent.autoBraking = false;
         _navMeshAgent.speed = data.moveSpeed;
         _navMeshAgent.angularSpeed = 360f;
         _navMeshAgent.acceleration = 50f;
@@ -45,14 +52,17 @@ public class MonsterObject : LifeObject
         _Move();
 
         _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
-        _animator.SetInteger(AnimatorID.Int.Attack, isAttackable ? Random.Range(0, data.attackMotionCount) : -1);
     }
+    #endregion
+    #region Public Methods
     public override void GetDamage(float damageAmount)
     {
         base.GetDamage(damageAmount);
 
         _animator.SetTrigger(AnimatorID.Trigger.Hit);
     }
+    #endregion
+    #region Protected Methods
     protected override void _UpdateStates()
     {
         base._UpdateStates();
@@ -77,14 +87,11 @@ public class MonsterObject : LifeObject
         isRecognized = false;
         isAttackable = false;
 
-        _patrolCor = null;
         _bodyCollider.enabled = false;
         _animator.SetTrigger(AnimatorID.Trigger.Die);
     }
-    void _LookAt(Vector3 target)
-    {
-        transform.LookAt(new Vector3(target.x, transform.position.y, target.z));
-    }
+    #endregion
+    #region Private Methods
     void _Move()
     {
         if (isRecognized)
@@ -107,8 +114,8 @@ public class MonsterObject : LifeObject
         _navMeshAgent.stoppingDistance = data.stoppingDistance;
         _navMeshAgent.destination = target.transform.position;
 
-        // 플레이어를 쳐다봄
-        _LookAt(target.transform.position);
+        if (isAttackable && _attackCor == null)
+            _attackCor = StartCoroutine(_Attack());
     }
     IEnumerator _Patrol(Vector3 startPosition)
     {
@@ -127,16 +134,34 @@ public class MonsterObject : LifeObject
             else yield return null;
         }
     }
+    IEnumerator _Attack()
+    {
+        // 플레이어 자리 쳐다보기
+        int idx = Random.Range(0, _attackClips.Length);
+        _animator.SetInteger(AnimatorID.Int.Attack, idx);
+        yield return new WaitForSeconds(_attackClips[idx].length);
+        _animator.SetInteger(AnimatorID.Int.Attack, -1);
+        _attackCor = null;
+    }
+    #endregion
 
+    #region Public Variables
     public bool hasTarget { get; private set; }
     public bool isRecognized { get; private set; } // 플레이어가 시야에 들어올 때
-    public bool isAttackable { get; private set; }
+    public bool isAttackable { get; private set; } // 공격 가능할 때
     public Player target = null; // 몬스터가 따라갈 대상
     public MonsterData data = null; // 몬스터 데이터 컨테이너
+    #endregion
+    #region Protected Variables
+    [SerializeField] protected AnimationClip[] _attackClips;
     protected Collider _bodyCollider = null;
     protected Animator _animator = null;
     protected NavMeshAgent _navMeshAgent = null;
     protected Rigidbody _rigidbody = null;
     protected Coroutine _patrolCor = null;
+    protected Coroutine _attackCor = null;
+    #endregion
+    #region Private Variables
     float _prevAttackTime = 0f;
+    #endregion
 }
