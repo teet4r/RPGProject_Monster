@@ -50,6 +50,7 @@ public class MonsterObject : LifeObject
         base.Update();
 
         _Move();
+        Debug.DrawRay(transform.position, transform.forward * 100f, Color.red);
 
         _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
     }
@@ -129,7 +130,7 @@ public class MonsterObject : LifeObject
             if (_navMeshAgent.remainingDistance < 0.01f)
             {
                 yield return new WaitForSeconds(Random.Range(0f, 7f));
-                _navMeshAgent.destination = Algorithms.GetRandomPointOnNavMesh(transform.position, Random.Range(0f, data.patrolDistance));
+                _navMeshAgent.destination = Algorithm.GetRandomPointOnNavMesh(transform.position, Random.Range(0f, data.patrolDistance));
             }
             else yield return null;
         }
@@ -137,12 +138,25 @@ public class MonsterObject : LifeObject
     IEnumerator _Attack()
     {
         // 플레이어 자리 쳐다보기
+        _navMeshAgent.isStopped = true;
+        transform.LookAt(target.transform.position);
+        yield return StartCoroutine(_Rotate(target.transform.position, 1.5f));
+
         int idx = Random.Range(0, _attackClips.Length);
         _animator.SetInteger(AnimatorID.Int.Attack, idx);
         yield return new WaitForSeconds(_attackClips[idx].length);
         _animator.SetInteger(AnimatorID.Int.Attack, -1);
+        _navMeshAgent.isStopped = false;
         _attackCor = null;
     }
+    IEnumerator _Rotate(Vector3 targetPos, float rotateTime)
+    {
+        if (!isWalking) yield break;
+        var newRotation = Quaternion.LookRotation(targetPos);
+        _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, newRotation, Time.deltaTime);
+        yield return null;
+    }
+
     #endregion
 
     #region Public Variables

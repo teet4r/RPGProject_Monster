@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Algorithms
+public class Algorithm
 {
     /// <summary>
     /// 내비메시 위의 랜덤한 위치를 반환하는 메서드.
@@ -27,5 +27,18 @@ public class Algorithms
             // 찾은 점 반환
             return hit.position;
         return Vector3.positiveInfinity;
+    }
+
+    /// <summary>
+    /// 각도 구하는 함수
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <returns></returns>
+    public static float GetAngle(Vector3 start, Vector3 end)
+    {
+        var diff = start - end;
+
+        return Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
     }
 }
