@@ -29,6 +29,7 @@ public class MonsterObject : LifeObject
         hasTarget = false;
         isRecognized = false;
         isAttackable = false;
+        isAttacking = false;
 
         _bodyCollider.isTrigger = true;
         _bodyCollider.enabled = true;
@@ -102,7 +103,8 @@ public class MonsterObject : LifeObject
                 StopCoroutine(_patrolCor);
                 _patrolCor = null;
             }
-            _RushToTarget();
+            if (!isAttacking)
+                _RushToTarget();
         }
         else
         {
@@ -138,31 +140,55 @@ public class MonsterObject : LifeObject
     IEnumerator _Attack()
     {
         // 플레이어 자리 쳐다보기
+        isAttacking = true;
+        yield return StartCoroutine(_Rotate(target.transform.position, 1f));
+
         _navMeshAgent.isStopped = true;
-        transform.LookAt(target.transform.position);
-        yield return StartCoroutine(_Rotate(target.transform.position, 1.5f));
+        //transform.LookAt(target.transform.position);
+        //yield return StartCoroutine(_Rotate(target.transform.position, 1.5f));
 
         int idx = Random.Range(0, _attackClips.Length);
         _animator.SetInteger(AnimatorID.Int.Attack, idx);
-        yield return new WaitForSeconds(_attackClips[idx].length);
+        yield return new WaitForSeconds(_attackClips[idx].length + 1f);
         _animator.SetInteger(AnimatorID.Int.Attack, -1);
         _navMeshAgent.isStopped = false;
         _attackCor = null;
+
+        isAttacking = false;
     }
+    /// <summary>
+    /// 원하는 각도까지 회전하는 함수
+    /// </summary>
+    /// <param name="targetPos"></param>
+    /// <param name="rotateTime"></param>
+    /// <returns></returns>
     IEnumerator _Rotate(Vector3 targetPos, float rotateTime)
     {
-        if (!isWalking) yield break;
         var newRotation = Quaternion.LookRotation(targetPos);
-        _rigidbody.rotation = Quaternion.Slerp(_rigidbody.rotation, newRotation, Time.deltaTime);
-        yield return null;
+        var yRotationPerFrame = newRotation.y * Time.deltaTime;
+        var rotateTimePerFrame = rotateTime * Time.deltaTime;
+        Debug.Log(yRotationPerFrame);
+        Debug.Log(rotateTimePerFrame);
+        Debug.Log(Time.deltaTime);
+        for (var i = 0f; i < rotateTime; i += yRotationPerFrame)
+        {
+            //Debug.Log(transform.rotation);
+            transform.rotation = new Quaternion(
+                transform.rotation.x,
+                transform.rotation.y + rotateTimePerFrame,
+                transform.rotation.z,
+                transform.rotation.w
+            );
+            yield return null;
+        }
     }
-
     #endregion
 
     #region Public Variables
     public bool hasTarget { get; private set; }
     public bool isRecognized { get; private set; } // 플레이어가 시야에 들어올 때
     public bool isAttackable { get; private set; } // 공격 가능할 때
+    public bool isAttacking { get; private set; } // 공격 중일 때 true
     public Player target = null; // 몬스터가 따라갈 대상
     public MonsterData data = null; // 몬스터 데이터 컨테이너
     #endregion
