@@ -37,7 +37,7 @@ public class Algorithm
     /// <returns></returns>
     public static float GetAngle(Vector3 start, Vector3 end)
     {
-        var diff = start - end;
+        var diff = end - start;
 
         return Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
     }

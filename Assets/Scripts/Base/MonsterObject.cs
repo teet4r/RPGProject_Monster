@@ -141,45 +141,51 @@ public class MonsterObject : LifeObject
     {
         // 플레이어 자리 쳐다보기
         isAttacking = true;
-        yield return StartCoroutine(_Rotate(target.transform.position, 1f));
-
         _navMeshAgent.isStopped = true;
-        //transform.LookAt(target.transform.position);
-        //yield return StartCoroutine(_Rotate(target.transform.position, 1.5f));
+        yield return StartCoroutine(_Rotate(target.transform.position, 0.5f));
 
         int idx = Random.Range(0, _attackClips.Length);
-        _animator.SetInteger(AnimatorID.Int.Attack, idx);
+        _animator.SetTrigger(AnimatorID.Trigger.Attacks[idx]);
         yield return new WaitForSeconds(_attackClips[idx].length + 1f);
-        _animator.SetInteger(AnimatorID.Int.Attack, -1);
-        _navMeshAgent.isStopped = false;
-        _attackCor = null;
 
+        _navMeshAgent.isStopped = false;
+        _navMeshAgent.destination = target.transform.position;
         isAttacking = false;
+        _attackCor = null;
     }
     /// <summary>
     /// 원하는 각도까지 회전하는 함수
     /// </summary>
-    /// <param name="targetPos"></param>
-    /// <param name="rotateTime"></param>
+    /// <param name="targetPos"></param>: 회전할 타겟 위치 
+    /// <param name="rotateTime"></param>: 회전 시간
     /// <returns></returns>
     IEnumerator _Rotate(Vector3 targetPos, float rotateTime)
     {
-        var newRotation = Quaternion.LookRotation(targetPos);
-        var yRotationPerFrame = newRotation.y * Time.deltaTime;
-        var rotateTimePerFrame = rotateTime * Time.deltaTime;
-        Debug.Log(yRotationPerFrame);
-        Debug.Log(rotateTimePerFrame);
-        Debug.Log(Time.deltaTime);
-        for (var i = 0f; i < rotateTime; i += yRotationPerFrame)
+        var curDeltaTime = Time.deltaTime;
+        var totalFrame = Mathf.RoundToInt(rotateTime / curDeltaTime); // rotateTime까지 도달하는데 필요한 프레임 개수
+        Debug.Log(curDeltaTime);
+        Debug.Log(totalFrame);
+        var curPosition = transform.position;
+        curPosition.x = curPosition.z = 0f;
+        targetPos.x = targetPos.z = 0f;
+        var curRotation = transform.rotation;
+        var curAngle = transform.eulerAngles;
+        Debug.Log(curAngle);
+        var angle = Algorithm.GetAngle(curPosition, targetPos);
+        Debug.Log("angle: " + angle);
+        //var newRotation = Quaternion.LookRotation(targetPos - curPosition);
+        //newRotation.x = newRotation.z = 0f;
+        var anglePerFrame = angle / totalFrame; // 프레임 당 회전할 각도
+        WaitForSeconds wfs = new WaitForSeconds(curDeltaTime);
+
+        for (var i = 1; i <= totalFrame; i++)
         {
-            //Debug.Log(transform.rotation);
-            transform.rotation = new Quaternion(
-                transform.rotation.x,
-                transform.rotation.y + rotateTimePerFrame,
-                transform.rotation.z,
-                transform.rotation.w
+            transform.eulerAngles = new Vector3(
+                curAngle.x,
+                curAngle.y + anglePerFrame * i,
+                curAngle.z
             );
-            yield return null;
+            yield return wfs;
         }
     }
     #endregion
