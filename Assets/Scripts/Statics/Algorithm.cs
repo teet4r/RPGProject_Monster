@@ -30,15 +30,16 @@ public class Algorithm
     }
 
     /// <summary>
-    /// 각도 구하는 함수
+    /// 각도 구하는 함수,
+    /// transform.forward 기준
     /// </summary>
     /// <param name="start"></param>
     /// <param name="end"></param>
     /// <returns></returns>
-    public static float GetAngle(Vector3 start, Vector3 end)
+    public static float GetAngle(Transform start, Transform end)
     {
-        var diff = end - start;
-
-        return Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        var startForward = start.forward;
+        var endForward = end.forward;
+        return Mathf.Atan2(startForward.z, endForward.x) * Mathf.Rad2Deg;
     }
 }
