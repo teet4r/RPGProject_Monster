@@ -11,7 +11,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Rotate3D))]
 #endregion
 public class MonsterObject : LifeObject
 {
@@ -22,7 +21,6 @@ public class MonsterObject : LifeObject
         _rigidbody = GetComponent<Rigidbody>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator= GetComponent<Animator>();
-        _rotate3D = GetComponent<Rotate3D>();
     }
     protected override void OnEnable()
     {
@@ -93,9 +91,7 @@ public class MonsterObject : LifeObject
         _bodyCollider.enabled = false;
         _animator.SetTrigger(AnimatorID.Trigger.Die);
     }
-    #endregion
-    #region Private Methods
-    void _Move()
+    protected virtual void _Move()
     {
         if (isRecognized)
         {
@@ -104,8 +100,7 @@ public class MonsterObject : LifeObject
                 StopCoroutine(_patrolCor);
                 _patrolCor = null;
             }
-            if (!isAttacking)
-                _RushToTarget();
+            _RushToTarget();
         }
         else
         {
@@ -113,15 +108,19 @@ public class MonsterObject : LifeObject
                 _patrolCor = StartCoroutine(_Patrol(transform.position));
         }
     }
-    void _RushToTarget()
+    protected virtual void _RushToTarget()
     {
         _navMeshAgent.stoppingDistance = data.stoppingDistance;
         _navMeshAgent.destination = target.transform.position;
 
+        var lookDir2D = target.transform.position;
+        lookDir2D.y = 0f;
+        transform.LookAt(lookDir2D);
+
         if (isAttackable && _attackCor == null)
             _attackCor = StartCoroutine(_Attack());
     }
-    IEnumerator _Patrol(Vector3 startPosition)
+    protected virtual IEnumerator _Patrol(Vector3 startPosition)
     {
         _navMeshAgent.isStopped = false;
         _navMeshAgent.destination = startPosition;
@@ -138,18 +137,14 @@ public class MonsterObject : LifeObject
             else yield return null;
         }
     }
-    IEnumerator _Attack()
+    protected virtual IEnumerator _Attack()
     {
-        // 플레이어 자리 쳐다보기
         isAttacking = true;
-        _navMeshAgent.isStopped = true;
-        yield return _rotate3D.StartCoroutine(_rotate3D.Rotate(target.transform.position, 0.5f));
 
         int idx = Random.Range(0, _attackClips.Length);
         _animator.SetTrigger(AnimatorID.Trigger.Attacks[idx]);
         yield return new WaitForSeconds(_attackClips[idx].length + 1f);
 
-        _navMeshAgent.isStopped = false;
         _navMeshAgent.destination = target.transform.position;
         isAttacking = false;
         _attackCor = null;
@@ -157,10 +152,10 @@ public class MonsterObject : LifeObject
     #endregion
 
     #region Public Variables
-    public bool hasTarget { get; private set; }
-    public bool isRecognized { get; private set; } // 플레이어가 시야에 들어올 때
-    public bool isAttackable { get; private set; } // 공격 가능할 때
-    public bool isAttacking { get; private set; } // 공격 중일 때 true
+    public bool hasTarget { get; protected set; }
+    public bool isRecognized { get; protected set; } // 플레이어가 시야에 들어올 때
+    public bool isAttackable { get; protected set; } // 공격 가능할 때
+    public bool isAttacking { get; protected set; } // 공격 중일 때 true
     public Player target = null; // 몬스터가 따라갈 대상
     public MonsterData data = null; // 몬스터 데이터 컨테이너
     #endregion
@@ -172,7 +167,6 @@ public class MonsterObject : LifeObject
     protected Rigidbody _rigidbody = null;
     protected Coroutine _patrolCor = null;
     protected Coroutine _attackCor = null;
-    protected Rotate3D _rotate3D = null;
     #endregion
     #region Private Variables
     float _prevAttackTime = 0f;

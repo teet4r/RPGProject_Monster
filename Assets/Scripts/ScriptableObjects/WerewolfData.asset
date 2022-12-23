@@ -18,4 +18,3 @@ MonoBehaviour:
   patrolDistance: 20
   recognitionDistance: 15
   attackRate: 1.8
-  attackMotionCount: 2

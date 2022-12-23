@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpecterPBRDefault
       objectReference: {fileID: 0}
+    - target: {fileID: 8548725443831320241, guid: 03c813d020433f849b063c06e022ff45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: 03c813d020433f849b063c06e022ff45, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -865,6 +869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackKnightBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 1802286859466036053, guid: 1fe9b7b57f071994f8c7c91f933f3484, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1802286859466067829, guid: 1fe9b7b57f071994f8c7c91f933f3484, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -1051,6 +1059,10 @@ PrefabInstance:
     - target: {fileID: 8925892822458641477, guid: 0a002f501a6b0cf4ba2ba786e4ef3da0, type: 3}
       propertyPath: m_Name
       value: RatAssassinPBRDefault
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925892822458641477, guid: 0a002f501a6b0cf4ba2ba786e4ef3da0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925892822458740837, guid: 0a002f501a6b0cf4ba2ba786e4ef3da0, type: 3}
       propertyPath: m_RootOrder

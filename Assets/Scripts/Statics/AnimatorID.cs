@@ -17,7 +17,8 @@ public class AnimatorID
         public static readonly int[] Attacks = {
             Animator.StringToHash("Attack0"),
             Animator.StringToHash("Attack1"),
-            Animator.StringToHash("Attack2")
+            Animator.StringToHash("Attack2"),
+            Animator.StringToHash("Attack3")
         };
     }
 }
