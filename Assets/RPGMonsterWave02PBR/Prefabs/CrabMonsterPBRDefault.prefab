@@ -497,13 +497,14 @@ GameObject:
   - component: {fileID: 906815843}
   - component: {fileID: 906815842}
   - component: {fileID: 906815841}
+  - component: {fileID: 6220212887385270903}
   m_Layer: 0
   m_Name: CrabMonsterPBRDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6928589415477905156
 Transform:
   m_ObjectHideFlags: 0
@@ -607,6 +608,19 @@ MonoBehaviour:
   _maxHp: 50
   target: {fileID: 0}
   data: {fileID: 11400000, guid: ca66067b641c2944982776ba08cff2bf, type: 2}
+  _attackClips: []
+--- !u!114 &6220212887385270903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6928589415477418788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3b7e35c038b2448be1eaa704e3c6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6928589415477418790
 GameObject:
   m_ObjectHideFlags: 0

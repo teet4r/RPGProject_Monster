@@ -284,10 +284,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpecterPBRDefault
       objectReference: {fileID: 0}
-    - target: {fileID: 8548725443831320241, guid: 03c813d020433f849b063c06e022ff45, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: 03c813d020433f849b063c06e022ff45, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -348,10 +344,6 @@ PrefabInstance:
     - target: {fileID: 7512065305920264353, guid: 7d59c6b5787e75e4dbce9c36da160cde, type: 3}
       propertyPath: m_Name
       value: LizardWarriorPBRDefault
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512065305920264353, guid: 7d59c6b5787e75e4dbce9c36da160cde, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7512065305920554177, guid: 7d59c6b5787e75e4dbce9c36da160cde, type: 3}
       propertyPath: m_RootOrder
@@ -457,10 +449,6 @@ PrefabInstance:
     - target: {fileID: 2219292830553907877, guid: 454080f5f7736ab449b8dd6c701db4a8, type: 3}
       propertyPath: m_Name
       value: ChestMonsterPBRDefault
-      objectReference: {fileID: 0}
-    - target: {fileID: 2219292830553907877, guid: 454080f5f7736ab449b8dd6c701db4a8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454080f5f7736ab449b8dd6c701db4a8, type: 3}
@@ -671,10 +659,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeholderPBRDefault
       objectReference: {fileID: 0}
-    - target: {fileID: 4530003306004163418, guid: 5cdd6bcb747ac81499811938257f1041, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4530003306004526970, guid: 5cdd6bcb747ac81499811938257f1041, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -735,10 +719,6 @@ PrefabInstance:
     - target: {fileID: 6928589415477418788, guid: eab7d955b38f12e45b725d1d6da3a635, type: 3}
       propertyPath: m_Name
       value: CrabMonsterPBRDefault
-      objectReference: {fileID: 0}
-    - target: {fileID: 6928589415477418788, guid: eab7d955b38f12e45b725d1d6da3a635, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6928589415477905156, guid: eab7d955b38f12e45b725d1d6da3a635, type: 3}
       propertyPath: m_RootOrder
@@ -870,37 +850,6 @@ Transform:
   m_Father: {fileID: 41865171}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
---- !u!1 &989979409 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3891923349452443940, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
-  m_PrefabInstance: {fileID: 1978846586}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &989979411
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989979409}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 0, z: 0.1}
---- !u!114 &989979412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989979409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a43f0d80cab92e4988f0d6333130fdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 1978846595}
 --- !u!1001 &1035910290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1020,10 +969,6 @@ PrefabInstance:
     - target: {fileID: 7581544333513177157, guid: eaeed9b5531d545469bed80f1156b08d, type: 3}
       propertyPath: m_Name
       value: WormMonsterPBRDefault
-      objectReference: {fileID: 0}
-    - target: {fileID: 7581544333513177157, guid: eaeed9b5531d545469bed80f1156b08d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaeed9b5531d545469bed80f1156b08d, type: 3}
@@ -1212,10 +1157,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WerewolfPBRDefault
       objectReference: {fileID: 0}
-    - target: {fileID: 5785497811905594081, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
 --- !u!1001 &1978846586
@@ -1232,10 +1173,6 @@ PrefabInstance:
     - target: {fileID: 3891923349452443982, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
       propertyPath: m_Name
       value: FlyingDemonPBRDefault
-      objectReference: {fileID: 0}
-    - target: {fileID: 3891923349452443982, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3891923349452803438, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
       propertyPath: m_RootOrder
@@ -1283,32 +1220,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
---- !u!114 &1978846595 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1978846595, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
-  m_PrefabInstance: {fileID: 1978846586}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb99a61f1341e1240b588c5871d4a84c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1992285537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7581544333513177209, guid: eaeed9b5531d545469bed80f1156b08d, type: 3}
-  m_PrefabInstance: {fileID: 1590893504}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1992285539
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992285537}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.275
-  m_Center: {x: 0, y: -0.1, z: 0}

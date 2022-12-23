@@ -38,8 +38,6 @@ public class Algorithm
     /// <returns></returns>
     public static float GetAngle(Transform start, Transform end)
     {
-        var startForward = start.forward;
-        var endForward = end.forward;
-        return Mathf.Atan2(startForward.z, endForward.x) * Mathf.Rad2Deg;
+        return Mathf.Atan2(start.forward.z, end.forward.x) * Mathf.Rad2Deg;
     }
 }

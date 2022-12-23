@@ -159,13 +159,14 @@ GameObject:
   - component: {fileID: 316559667}
   - component: {fileID: 316559671}
   - component: {fileID: 316559666}
+  - component: {fileID: 4797345210624970733}
   m_Layer: 0
   m_Name: ChestMonsterPBRDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2219292830553816709
 Transform:
   m_ObjectHideFlags: 0
@@ -269,8 +270,19 @@ MonoBehaviour:
   _maxHp: 50
   target: {fileID: 0}
   data: {fileID: 11400000, guid: 9ca3ca40fe7923b41bfb6b8eed730d7b, type: 2}
-  attackColliders:
-  - {fileID: 3712382193200409471}
+  _attackClips: []
+--- !u!114 &4797345210624970733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219292830553907877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3b7e35c038b2448be1eaa704e3c6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2219292830553907879
 GameObject:
   m_ObjectHideFlags: 0

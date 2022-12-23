@@ -1776,6 +1776,7 @@ GameObject:
   - component: {fileID: 1639230346}
   - component: {fileID: 1639230350}
   - component: {fileID: 1639230345}
+  - component: {fileID: 1403050682}
   m_Layer: 0
   m_Name: BlackKnightPBRDefault
   m_TagString: Untagged
@@ -1890,6 +1891,18 @@ MonoBehaviour:
   _attackClips:
   - {fileID: 7400000, guid: 3e4c45655f766e74e9a7fbb77fb47f04, type: 3}
   - {fileID: 7400000, guid: a3027121d0d75f64197d6f9a6896309f, type: 3}
+--- !u!114 &1403050682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802286859466036053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3b7e35c038b2448be1eaa704e3c6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1802286859466036055
 GameObject:
   m_ObjectHideFlags: 0

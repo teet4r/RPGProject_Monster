@@ -11,6 +11,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rotate3D))]
 #endregion
 public class MonsterObject : LifeObject
 {
@@ -21,6 +22,7 @@ public class MonsterObject : LifeObject
         _rigidbody = GetComponent<Rigidbody>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator= GetComponent<Animator>();
+        _rotate3D = GetComponent<Rotate3D>();
     }
     protected override void OnEnable()
     {
@@ -50,12 +52,7 @@ public class MonsterObject : LifeObject
     {
         base.Update();
 
-        Debug.Log(transform.forward);
-        Debug.Log(Vector3.forward);
-        Debug.Log(Mathf.Acos(Vector3.Dot(transform.forward, Vector3.forward)) * Mathf.Rad2Deg);
-
         _Move();
-        Debug.DrawRay(Vector3.zero, transform.forward * 100f, Color.red);
 
         _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
     }
@@ -146,7 +143,7 @@ public class MonsterObject : LifeObject
         // 플레이어 자리 쳐다보기
         isAttacking = true;
         _navMeshAgent.isStopped = true;
-        yield return StartCoroutine(_Rotate(target.transform, 0.5f));
+        yield return _rotate3D.StartCoroutine(_rotate3D.Rotate(target.transform.position, 0.5f));
 
         int idx = Random.Range(0, _attackClips.Length);
         _animator.SetTrigger(AnimatorID.Trigger.Attacks[idx]);
@@ -156,44 +153,6 @@ public class MonsterObject : LifeObject
         _navMeshAgent.destination = target.transform.position;
         isAttacking = false;
         _attackCor = null;
-    }
-    /// <summary>
-    /// 원하는 각도까지 회전하는 함수
-    /// </summary>
-    /// <param name="targetPos"></param>: 회전할 타겟 위치 
-    /// <param name="rotateTime"></param>: 회전 시간
-    /// <returns></returns>
-    IEnumerator _Rotate(Transform target, float rotateTime)
-    {
-        var curDeltaTime = Time.deltaTime;
-        var totalFrame = Mathf.RoundToInt(rotateTime / curDeltaTime); // rotateTime까지 도달하는데 필요한 프레임 개수
-        var curAngle = transform.eulerAngles;
-        Debug.Log(curAngle.y);
-        var angle = Algorithm.GetAngle(transform, target);
-        Debug.Log(angle);
-        var anglePerFrame = angle / totalFrame; // 프레임 당 회전할 각도
-        Debug.Log(anglePerFrame);
-        WaitForSeconds wfs = new WaitForSeconds(curDeltaTime);
-
-        Debug.Log(transform.eulerAngles.y);
-        for (var i = 1; i <= totalFrame; i++)
-        {
-            transform.eulerAngles = new Vector3(
-                curAngle.x,
-                curAngle.y + anglePerFrame * i,
-                curAngle.z
-            );
-            //transform.Rotate(
-            //    new Vector3(
-            //        curAngle.x,
-            //        curAngle.y + anglePerFrame * i,
-            //        curAngle.z
-            //    ), 
-            //    Space.World
-            //);
-            yield return wfs;
-        }
-        Debug.Log(transform.eulerAngles.y);
     }
     #endregion
 
@@ -213,6 +172,7 @@ public class MonsterObject : LifeObject
     protected Rigidbody _rigidbody = null;
     protected Coroutine _patrolCor = null;
     protected Coroutine _attackCor = null;
+    protected Rotate3D _rotate3D = null;
     #endregion
     #region Private Variables
     float _prevAttackTime = 0f;

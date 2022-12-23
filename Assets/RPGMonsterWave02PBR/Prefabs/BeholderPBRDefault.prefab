@@ -1593,13 +1593,14 @@ GameObject:
   - component: {fileID: 1229711340}
   - component: {fileID: 597661753}
   - component: {fileID: 597661748}
+  - component: {fileID: 5622717033502297405}
   m_Layer: 0
   m_Name: BeholderPBRDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4530003306004526970
 Transform:
   m_ObjectHideFlags: 0
@@ -1703,6 +1704,19 @@ MonoBehaviour:
   _maxHp: 30
   target: {fileID: 0}
   data: {fileID: 11400000, guid: aa78d09275d99ea47aa91ba0a85e2efc, type: 2}
+  _attackClips: []
+--- !u!114 &5622717033502297405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4530003306004163418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3b7e35c038b2448be1eaa704e3c6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4530003306004163420
 GameObject:
   m_ObjectHideFlags: 0
