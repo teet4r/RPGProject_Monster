@@ -683,7 +683,10 @@ MonoBehaviour:
   _maxHp: 50
   target: {fileID: 0}
   data: {fileID: 11400000, guid: 9be350f022d1ff94983adacb1656dd04, type: 2}
-  _attackClips: []
+  _attackClips:
+  - {fileID: 7400000, guid: 5e79674a2d06c8c4aa59ec3df596544e, type: 3}
+  - {fileID: 7400000, guid: 0e85aab717d27f64492ac7a5616560d3, type: 3}
+  - {fileID: 7400000, guid: 4379646af4a951b4a8ce915c00549985, type: 3}
 --- !u!1 &7512065305920264355
 GameObject:
   m_ObjectHideFlags: 0

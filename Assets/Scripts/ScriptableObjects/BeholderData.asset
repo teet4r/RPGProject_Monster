@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   damage: 12
-  stoppingDistance: 2.25
+  stoppingDistance: 2.75
   patrolDistance: 30
   recognitionDistance: 20
   attackRate: 1.5
-  attackMotionCount: 2
