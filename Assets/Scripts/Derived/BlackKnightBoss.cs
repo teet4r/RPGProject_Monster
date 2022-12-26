@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackKnight : BossMonsterObject
+public class BlackKnightBoss : BossMonsterObject
 {
     protected override void _Die()
     {

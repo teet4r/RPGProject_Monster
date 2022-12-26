@@ -19,7 +19,6 @@ public class Rotate3D : MonoBehaviour
         var targetDir = targetPosition - myPosition;
         targetDir.y = 0f;
         var signedAngle = Vector3.SignedAngle(myForward, targetDir, Vector3.up);
-
         var curDeltaTime = Time.deltaTime;
         var totalFrame = Mathf.RoundToInt(rotateTime / curDeltaTime);
         var curAngle = transform.eulerAngles;

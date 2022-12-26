@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 4843028258353612}
   - component: {fileID: 95690966028241422}
   m_Layer: 0
-  m_Name: SpiderPBR
+  m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

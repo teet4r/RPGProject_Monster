@@ -1807,7 +1807,7 @@ GameObject:
   - component: {fileID: 4240512476921092}
   - component: {fileID: 95848811368337272}
   m_Layer: 0
-  m_Name: OrcPBR
+  m_Name: Orc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

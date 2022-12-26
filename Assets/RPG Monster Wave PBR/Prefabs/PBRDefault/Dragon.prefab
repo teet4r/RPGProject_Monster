@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 4258366756040210}
   - component: {fileID: 95336232578254584}
   m_Layer: 0
-  m_Name: DragonPBR
+  m_Name: Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
