@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : LifeObject
 {
+    #region Unity Messages
     void Awake()
     {
         _movementController = GetComponent<MovementController>();
@@ -14,6 +15,10 @@ public class Player : LifeObject
 
         _isInvincible = false;
     }
+    void Start()
+    {
+        _wfs_invincible = new WaitForSeconds(_invincibleTime);
+    }
     protected override void Update()
     {
         base.Update();
@@ -23,29 +28,45 @@ public class Player : LifeObject
     void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out AttackCollider attackCollider))
-            StartCoroutine(_TriggerGetDamage(attackCollider.parent.data.damage));
+            GetDamage(attackCollider.parent.data.damage);
     }
     void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out AttackCollider attackCollider))
-            StartCoroutine(_TriggerGetDamage(attackCollider.parent.data.damage));
+            GetDamage(attackCollider.parent.data.damage);
     }
+    #endregion
+    public override void GetDamage(float damageAmount)
+    {
+        if (!isAlive) return;
+        if (_isInvincible) return;
+
+        StartCoroutine(_TriggerGetDamage(damageAmount));
+    }
+
     protected override void _Die()
     {
         base._Die();
 
+        _isInvincible = false;
+
         gameObject.SetActive(false);
     }
+    
     IEnumerator _TriggerGetDamage(float damage)
     {
-        if (_isInvincible) yield break;
         _isInvincible = true;
-        GetDamage(damage);
-        yield return new WaitForSeconds(_invincibleTime);
+
+        curHp -= damage;
+        if (curHp <= 0f)
+            _Die();
+
+        yield return _wfs_invincible;
         _isInvincible = false;
     }
 
     [SerializeField] float _invincibleTime = 1f;
     MovementController _movementController = null;
+    WaitForSeconds _wfs_invincible;
     bool _isInvincible;
 }

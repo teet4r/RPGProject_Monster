@@ -12,30 +12,38 @@ public class EvilMageBoss : BossMonsterObject
     }
     protected override IEnumerator _Attack()
     {
-        // 플레이어 자리 쳐다보기
+        // 플레이어 자리까지 회전
+        // 상태 잠시 변경
         isAttacking = true;
         _navMeshAgent.isStopped = true;
-        yield return _rotate3D.StartCoroutine(_rotate3D.Rotate(target.transform.position, 0.5f));
+        yield return _rotate3D.StartCoroutine(_rotate3D.Rotate(target.transform.position));
 
+        // 공격이 즉발형이기 때문에 0.1초간 멍 때린 후 공격(플레이어가 피할 여지를 주도록)
+        var targetPos = target.transform.position;
+        yield return _wfs_readyToAttack;
+
+        // 공격
         int idx = Random.Range(0, _attackClips.Length);
         _animator.SetTrigger(AnimatorID.Trigger.Attacks[idx]);
-        StartCoroutine(_PlayEffect(idx, target.transform.position));
+        StartCoroutine(_DoMagicAttack(idx, targetPos));
 
+        // 공격 애니메이션 + 1초가 끝날 때까지 대기
         yield return new WaitForSeconds(_attackClips[idx].length + 1f);
 
+        // 상태 원위치
         _navMeshAgent.isStopped = false;
         _navMeshAgent.destination = target.transform.position;
         isAttacking = false;
         _attackCor = null;
     }
-    IEnumerator _PlayEffect(int attackMotionIndex, Vector3 position)
+    IEnumerator _DoMagicAttack(int attackMotionIndex, Vector3 position)
     {
-        yield return new WaitForSeconds(1f);
-        effects[attackMotionIndex].transform.position = position;
-        effects[attackMotionIndex].Play();
-        yield return new WaitForSeconds(1f);
-        effects[attackMotionIndex].Stop(true);
+        var magicAttackInfo = magicAttackInfos[attackMotionIndex];
+        yield return new WaitForSeconds(magicAttackInfo.effectDelayTime); // 공격하는 모션이랑 실제 공격이 일치하도록 잠시 대기
+        magicAttackInfo.magicAttack.Attack(position);
     }
-    
-    public ParticleSystem[] effects;
+
+    [SerializeField]
+    MagicAttackInfo[] magicAttackInfos;
+    WaitForSeconds _wfs_readyToAttack = new WaitForSeconds(0.1f);
 }

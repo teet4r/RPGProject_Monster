@@ -12,7 +12,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 #endregion
-public class MonsterObject : LifeObject
+public abstract class MonsterObject : LifeObject
 {
     #region Unity Messages
     protected virtual void Awake()
@@ -108,18 +108,6 @@ public class MonsterObject : LifeObject
                 _patrolCor = StartCoroutine(_Patrol(transform.position));
         }
     }
-    protected virtual void _RushToTarget()
-    {
-        _navMeshAgent.stoppingDistance = data.stoppingDistance;
-        _navMeshAgent.destination = target.transform.position;
-
-        var lookDir2D = target.transform.position;
-        lookDir2D.y = 0f;
-        transform.LookAt(lookDir2D);
-
-        if (isAttackable && _attackCor == null)
-            _attackCor = StartCoroutine(_Attack());
-    }
     protected virtual IEnumerator _Patrol(Vector3 startPosition)
     {
         _navMeshAgent.isStopped = false;
@@ -137,18 +125,8 @@ public class MonsterObject : LifeObject
             else yield return null;
         }
     }
-    protected virtual IEnumerator _Attack()
-    {
-        isAttacking = true;
-
-        int idx = Random.Range(0, _attackClips.Length);
-        _animator.SetTrigger(AnimatorID.Trigger.Attacks[idx]);
-        yield return new WaitForSeconds(_attackClips[idx].length + 1f);
-
-        _navMeshAgent.destination = target.transform.position;
-        isAttacking = false;
-        _attackCor = null;
-    }
+    protected abstract void _RushToTarget();
+    protected abstract IEnumerator _Attack();
     #endregion
 
     #region Public Variables

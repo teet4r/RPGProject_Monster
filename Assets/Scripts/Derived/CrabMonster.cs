@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrabMonster : MonsterObject
+public class CrabMonster : NormalMonsterObject
 {
     protected override void _Die()
     {

@@ -10,7 +10,7 @@ public class Rotate3D : MonoBehaviour
     /// <param name="targetPosition"></param>: 회전할 타겟 위치 
     /// <param name="rotateTime"></param>: 회전 시간
     /// <returns></returns>
-    public IEnumerator Rotate(Vector3 targetPosition, float rotateTime)
+    public IEnumerator Rotate(Vector3 targetPosition)
     {
         var myPosition = transform.position;
         myPosition.y = 0f;
@@ -34,4 +34,6 @@ public class Rotate3D : MonoBehaviour
             yield return null;
         }
     }
+
+    public float rotateTime = 1f;
 }

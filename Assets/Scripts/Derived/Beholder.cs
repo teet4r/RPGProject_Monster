@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Beholder : MonsterObject
+public class Beholder : NormalMonsterObject
 {
     protected override void _Die()
     {

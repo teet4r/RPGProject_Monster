@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RatAssassin : MonsterObject
+public class RatAssassin : NormalMonsterObject
 {
     protected override void _Die()
     {
