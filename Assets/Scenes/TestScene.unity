@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Specter
       objectReference: {fileID: 0}
+    - target: {fileID: 8548725443831320241, guid: 03c813d020433f849b063c06e022ff45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8548725443831747411, guid: 03c813d020433f849b063c06e022ff45, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -345,6 +349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LizardWarrior
       objectReference: {fileID: 0}
+    - target: {fileID: 7512065305920264353, guid: 7d59c6b5787e75e4dbce9c36da160cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7512065305920554177, guid: 7d59c6b5787e75e4dbce9c36da160cde, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -401,6 +409,10 @@ PrefabInstance:
     - target: {fileID: 1201003157251696, guid: f397a44c833ad65409eba4bce5ea62ed, type: 3}
       propertyPath: m_Name
       value: EvilMageBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201003157251696, guid: f397a44c833ad65409eba4bce5ea62ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4744821207475892, guid: f397a44c833ad65409eba4bce5ea62ed, type: 3}
       propertyPath: m_RootOrder
@@ -519,6 +531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChestMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 2219292830553907877, guid: 454080f5f7736ab449b8dd6c701db4a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 454080f5f7736ab449b8dd6c701db4a8, type: 3}
 --- !u!1 &408579702
@@ -634,7 +650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &543999014
 Transform:
   m_ObjectHideFlags: 0
@@ -875,6 +891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beholder
       objectReference: {fileID: 0}
+    - target: {fileID: 4530003306004163418, guid: 5cdd6bcb747ac81499811938257f1041, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4530003306004526970, guid: 5cdd6bcb747ac81499811938257f1041, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -992,6 +1012,10 @@ PrefabInstance:
     - target: {fileID: 6928589415477418788, guid: eab7d955b38f12e45b725d1d6da3a635, type: 3}
       propertyPath: m_Name
       value: CrabMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928589415477418788, guid: eab7d955b38f12e45b725d1d6da3a635, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6928589415477905156, guid: eab7d955b38f12e45b725d1d6da3a635, type: 3}
       propertyPath: m_RootOrder
@@ -1138,6 +1162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackKnightBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 1802286859466036053, guid: 1fe9b7b57f071994f8c7c91f933f3484, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1802286859466067829, guid: 1fe9b7b57f071994f8c7c91f933f3484, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -1191,9 +1219,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1732014790, guid: 45f36e2270151a542be4982f9f1dd581, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 41865174}
     - target: {fileID: 1706760125350986, guid: 45f36e2270151a542be4982f9f1dd581, type: 3}
       propertyPath: m_Name
-      value: Golem
+      value: GolemBoss
       objectReference: {fileID: 0}
     - target: {fileID: 4191744185429214, guid: 45f36e2270151a542be4982f9f1dd581, type: 3}
       propertyPath: m_RootOrder
@@ -1205,7 +1237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4191744185429214, guid: 45f36e2270151a542be4982f9f1dd581, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000011920929
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4191744185429214, guid: 45f36e2270151a542be4982f9f1dd581, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1526,7 +1558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4843028258353612, guid: a81cfdb3f3b757345a955fb9947163c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.17906332
+      value: -3.42
       objectReference: {fileID: 0}
     - target: {fileID: 4843028258353612, guid: a81cfdb3f3b757345a955fb9947163c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1572,6 +1604,10 @@ PrefabInstance:
     - target: {fileID: 8925892822458641477, guid: 0a002f501a6b0cf4ba2ba786e4ef3da0, type: 3}
       propertyPath: m_Name
       value: RatAssassin
+      objectReference: {fileID: 0}
+    - target: {fileID: 8925892822458641477, guid: 0a002f501a6b0cf4ba2ba786e4ef3da0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925892822458740837, guid: 0a002f501a6b0cf4ba2ba786e4ef3da0, type: 3}
       propertyPath: m_RootOrder
@@ -1644,7 +1680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5785497811905240769, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2158539
+      value: 2.071
       objectReference: {fileID: 0}
     - target: {fileID: 5785497811905240769, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1677,6 +1713,10 @@ PrefabInstance:
     - target: {fileID: 5785497811905594081, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
       propertyPath: m_Name
       value: Werewolf
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785497811905594081, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ed62976a330f544fa0602493a7a2245, type: 3}
@@ -1751,6 +1791,10 @@ PrefabInstance:
     - target: {fileID: 3891923349452443982, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
       propertyPath: m_Name
       value: FlyingDemon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891923349452443982, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3891923349452803438, guid: 4d72544ac965a074d899f0c105cfc5d5, type: 3}
       propertyPath: m_RootOrder

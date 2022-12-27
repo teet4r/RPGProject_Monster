@@ -40,7 +40,7 @@ public class EvilMageBoss : BossMonsterObject
     {
         var magicAttackInfo = magicAttackInfos[attackMotionIndex];
         yield return new WaitForSeconds(magicAttackInfo.effectDelayTime); // 공격하는 모션이랑 실제 공격이 일치하도록 잠시 대기
-        magicAttackInfo.magicAttack.Attack(position);
+        //magicAttackInfo.magicAttack.Attack(position);
     }
 
     [SerializeField]
