@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class EvilMageBoss : BossMonsterObject
 {
+    protected override void Awake()
+    {
+        base.Awake();
+
+        _attackPatterns.Add(GetComponent<EvilMagePattern1>());
+        _attackPatterns.Add(GetComponent<EvilMagePattern2>());
+    }
     protected override void _Die()
     {
         base._Die();
@@ -25,7 +32,7 @@ public class EvilMageBoss : BossMonsterObject
         // 공격
         int idx = Random.Range(0, _attackClips.Length);
         _animator.SetTrigger(AnimatorID.Trigger.Attacks[idx]);
-        StartCoroutine(_DoMagicAttack(idx, targetPos));
+        _attackPatterns[idx].Attack(targetPos);
 
         // 공격 애니메이션 + 1초가 끝날 때까지 대기
         yield return new WaitForSeconds(_attackClips[idx].length + 1f);
@@ -36,14 +43,7 @@ public class EvilMageBoss : BossMonsterObject
         isAttacking = false;
         _attackCor = null;
     }
-    IEnumerator _DoMagicAttack(int attackMotionIndex, Vector3 position)
-    {
-        var magicAttackInfo = magicAttackInfos[attackMotionIndex];
-        yield return new WaitForSeconds(magicAttackInfo.effectDelayTime); // 공격하는 모션이랑 실제 공격이 일치하도록 잠시 대기
-        //magicAttackInfo.magicAttack.Attack(position);
-    }
 
-    [SerializeField]
-    MagicAttackInfo[] magicAttackInfos;
+    List<IAttackPattern> _attackPatterns = new List<IAttackPattern>();
     WaitForSeconds _wfs_readyToAttack = new WaitForSeconds(0.1f);
 }

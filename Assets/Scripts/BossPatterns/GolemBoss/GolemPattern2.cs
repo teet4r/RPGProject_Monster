@@ -13,7 +13,7 @@ public class GolemPattern2 : MonoBehaviour, IAttackPattern
     {
         yield return _effectDelayTime;
         var newTargetPosition = new Vector3(targetPosition.x, targetPosition.y + 20f, targetPosition.z);
-        for (int i = 0; i < _attackCount; i++)
+        for (int i = 0; i < _knivesCount; i++)
         {
             Instantiate(_magicAttackPrefab, newTargetPosition, _magicAttackPrefab.transform.rotation);
             yield return _attackRate;
@@ -21,7 +21,7 @@ public class GolemPattern2 : MonoBehaviour, IAttackPattern
     }
 
     [SerializeField] GameObject _magicAttackPrefab;
-    [SerializeField] int _attackCount = 3;
+    [SerializeField] int _knivesCount = 3;
     WaitForSeconds _effectDelayTime = new WaitForSeconds(0.5f);
     WaitForSeconds _attackRate = new WaitForSeconds(0.3f);
 }

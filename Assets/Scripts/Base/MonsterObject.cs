@@ -54,6 +54,11 @@ public abstract class MonsterObject : LifeObject
 
         _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
     }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out Player player))
+            player.GetDamage(data.damage);
+    }
     #endregion
     #region Public Methods
     public override void GetDamage(float damageAmount)

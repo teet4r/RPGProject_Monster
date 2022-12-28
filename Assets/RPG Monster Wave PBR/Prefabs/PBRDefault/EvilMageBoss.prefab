@@ -423,13 +423,15 @@ GameObject:
   - component: {fileID: 514336070757949284}
   - component: {fileID: 2355352749640624755}
   - component: {fileID: 4224789216310290724}
+  - component: {fileID: 1060558993}
+  - component: {fileID: 1060558994}
   m_Layer: 0
   m_Name: EvilMageBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4744821207475892
 Transform:
   m_ObjectHideFlags: 0
@@ -538,11 +540,6 @@ MonoBehaviour:
   _attackClips:
   - {fileID: 7400000, guid: 9078b40d437984148b9ac2b2ae1b8d01, type: 3}
   - {fileID: 7400000, guid: c46c546c41ae5f342a3b47e052a74bb8, type: 3}
-  magicAttackInfos:
-  - magicAttack: {fileID: 0}
-    effectDelayTime: 0.4
-  - magicAttack: {fileID: 0}
-    effectDelayTime: 0.3
 --- !u!114 &4224789216310290724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +553,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTime: 0.5
+--- !u!114 &1060558993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201003157251696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434e1d59b1c03bb4083cc49a77b10961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _magicAttackPrefab: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+  _explosionCount: 5
+--- !u!114 &1060558994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201003157251696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70dad5b1e9b27fd46bb6a467d99c89ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _magicAttackPrefab: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
+  _FlameCount: 1
 --- !u!1 &1217098102103856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990492854915224}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 1.242853, z: -0.96560603}
+  m_LocalPosition: {x: 4.08, y: 11.46, z: 29.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

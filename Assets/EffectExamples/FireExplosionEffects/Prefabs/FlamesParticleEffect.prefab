@@ -4910,7 +4910,7 @@ Transform:
   m_GameObject: {fileID: 1000010823978654}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4000012936073094}
@@ -4928,7 +4928,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 5
   simulationSpeed: 2
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -8299,9 +8299,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8478,11 +8478,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 192
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
@@ -9523,9 +9523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdded449328f7748be0504ac6e1554f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 28
-  _hitValidTime: 4
-  _hitRadius: 2
+  damage: 20
 --- !u!1 &1000013439165456
 GameObject:
   m_ObjectHideFlags: 0
