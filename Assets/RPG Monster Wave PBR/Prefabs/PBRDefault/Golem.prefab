@@ -1369,6 +1369,7 @@ GameObject:
   - component: {fileID: 1732014791}
   - component: {fileID: 1732014790}
   - component: {fileID: 1732014794}
+  - component: {fileID: 601801131195887082}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Untagged
@@ -1495,6 +1496,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: c192a9f3a5cf16946a5271250e99aed1, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 2ef6cb7532e592941815ddab649c1787, type: 3}
+  - {fileID: 7400000, guid: 014713eb1e7756d47b218c3f15bf75cc, type: 3}
 --- !u!114 &1732014794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,6 +1511,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _magicAttackPrefab: {fileID: 1839445213900760, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
   _meteorCount: 12
+--- !u!114 &601801131195887082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706760125350986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c083aaf81cb470148861f446127a63bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _magicAttackPrefab: {fileID: 1168529248583268, guid: 76d29242e44bd1d4481337c8f53681ac, type: 3}
+  _attackCount: 3
 --- !u!1 &1713691074708414
 GameObject:
   m_ObjectHideFlags: 0

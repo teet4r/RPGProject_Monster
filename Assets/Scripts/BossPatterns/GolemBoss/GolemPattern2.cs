@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GolemPattern1 : MonoBehaviour, IAttackPattern
+public class GolemPattern2 : MonoBehaviour, IAttackPattern
 {
     public void Attack(Vector3 targetPosition)
     {
@@ -12,16 +12,16 @@ public class GolemPattern1 : MonoBehaviour, IAttackPattern
     IEnumerator _Attack(Vector3 targetPosition)
     {
         yield return _effectDelayTime;
-        for (int i = 0; i < _meteorCount; i++)
+        var newTargetPosition = new Vector3(targetPosition.x, targetPosition.y + 20f, targetPosition.z);
+        for (int i = 0; i < _attackCount; i++)
         {
-            var newTargetPos = new Vector3(targetPosition.x + Random.Range(-5f, 5f), 0f, targetPosition.z + Random.Range(-5f, 5f));
-            Instantiate(_magicAttackPrefab, newTargetPos, Quaternion.identity);
+            Instantiate(_magicAttackPrefab, newTargetPosition, _magicAttackPrefab.transform.rotation);
             yield return _attackRate;
         }
     }
 
     [SerializeField] GameObject _magicAttackPrefab;
-    [SerializeField] int _meteorCount = 12;
+    [SerializeField] int _attackCount = 3;
     WaitForSeconds _effectDelayTime = new WaitForSeconds(0.5f);
-    WaitForSeconds _attackRate = new WaitForSeconds(0.15f);
+    WaitForSeconds _attackRate = new WaitForSeconds(0.3f);
 }

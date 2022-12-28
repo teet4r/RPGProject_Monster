@@ -9,6 +9,7 @@ public class GolemBoss : BossMonsterObject
         base.Awake();
 
         _attackPatterns.Add(GetComponent<GolemPattern1>());
+        _attackPatterns.Add(GetComponent<GolemPattern2>());
     }
     protected override void _Die()
     {

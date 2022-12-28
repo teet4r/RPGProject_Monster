@@ -91521,7 +91521,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -91695,10 +91695,10 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 3
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 192
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -91713,9 +91713,9 @@ ParticleSystem:
     enter: 2
     exit: 0
     colliderQueryMode: 0
-    radiusScale: 1
+    radiusScale: 1.5
     primitives:
-    - {fileID: 4511100218886888}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -92779,8 +92779,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 50
+  MinDistance: 0.003730624
+  MaxDistance: 0.0040933318
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
