@@ -6,6 +6,7 @@ using UnityEngine;
 public class MonsterData : ScriptableObject
 {
     public float moveSpeed = 7f;
+    [Tooltip("body damage")]
     public float damage = 10f;
     public float stoppingDistance = 3f;
     public float patrolDistance = 30f;

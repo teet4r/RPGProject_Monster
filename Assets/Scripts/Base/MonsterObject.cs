@@ -26,7 +26,6 @@ public abstract class MonsterObject : LifeObject
     {
         base.OnEnable();
 
-        hasTarget = false;
         isRecognized = false;
         isAttackable = false;
         isAttacking = false;
@@ -49,6 +48,8 @@ public abstract class MonsterObject : LifeObject
     protected override void Update()
     {
         base.Update();
+
+        target = GameManager.instance.player;
 
         _Move();
 
@@ -73,7 +74,6 @@ public abstract class MonsterObject : LifeObject
     {
         base._UpdateStates();
 
-        hasTarget = target != null && target.isAlive;
         isRecognized = hasTarget && Vector3.Distance(target.transform.position, transform.position) <= data.recognitionDistance;
         if (hasTarget &&
             Vector3.Distance(target.transform.position, transform.position) <= data.stoppingDistance + 1f &&
@@ -89,7 +89,6 @@ public abstract class MonsterObject : LifeObject
     {
         base._Die();
 
-        hasTarget = false;
         isRecognized = false;
         isAttackable = false;
 
@@ -135,14 +134,14 @@ public abstract class MonsterObject : LifeObject
     #endregion
 
     #region Public Variables
-    public bool hasTarget { get; protected set; }
+    public bool hasTarget { get { return target != null && target.isAlive; } }
     public bool isRecognized { get; protected set; } // 플레이어가 시야에 들어올 때
     public bool isAttackable { get; protected set; } // 공격 가능할 때
     public bool isAttacking { get; protected set; } // 공격 중일 때 true
-    public Player target = null; // 몬스터가 따라갈 대상
     public MonsterData data = null; // 몬스터 데이터 컨테이너
     #endregion
     #region Protected Variables
+    protected Player target = null; // 몬스터가 따라갈 대상
     [SerializeField] protected AnimationClip[] _attackClips;
     protected Collider _bodyCollider = null;
     protected Animator _animator = null;
