@@ -681,7 +681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 50
-  target: {fileID: 0}
   data: {fileID: 11400000, guid: 9be350f022d1ff94983adacb1656dd04, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 5e79674a2d06c8c4aa59ec3df596544e, type: 3}

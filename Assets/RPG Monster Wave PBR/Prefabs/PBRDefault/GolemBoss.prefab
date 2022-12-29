@@ -1371,7 +1371,7 @@ GameObject:
   - component: {fileID: 1732014794}
   - component: {fileID: 601801131195887082}
   m_Layer: 0
-  m_Name: Golem
+  m_Name: GolemBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1492,7 +1492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 50
-  target: {fileID: 0}
   data: {fileID: 11400000, guid: c192a9f3a5cf16946a5271250e99aed1, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 2ef6cb7532e592941815ddab649c1787, type: 3}

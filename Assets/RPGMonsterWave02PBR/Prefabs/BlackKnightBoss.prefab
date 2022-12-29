@@ -1756,7 +1756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1802286859466067829
 Transform:
   m_ObjectHideFlags: 0
@@ -1859,7 +1859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 80
-  target: {fileID: 0}
   data: {fileID: 11400000, guid: 97730afe2040d0049a8325d8bb02f914, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 3e4c45655f766e74e9a7fbb77fb47f04, type: 3}
