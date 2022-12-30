@@ -11,12 +11,6 @@ public class GolemBoss : BossMonsterObject
         _attackPatterns.Add(GetComponent<GolemPattern1>());
         _attackPatterns.Add(GetComponent<GolemPattern2>());
     }
-    protected override void _Die()
-    {
-        base._Die();
-
-        //gameObject.SetActive(false);
-    }
     protected override IEnumerator _Attack()
     {
         // 플레이어 자리까지 회전

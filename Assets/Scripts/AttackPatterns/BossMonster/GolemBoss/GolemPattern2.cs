@@ -12,7 +12,7 @@ public class GolemPattern2 : MonoBehaviour, IAttackPattern
     IEnumerator _Attack(Vector3 targetPosition)
     {
         yield return _effectDelayTime;
-        var newTargetPosition = new Vector3(targetPosition.x, targetPosition.y + 20f, targetPosition.z);
+        var newTargetPosition = new Vector3(targetPosition.x, targetPosition.y + 15f, targetPosition.z);
         for (int i = 0; i < _knivesCount; i++)
         {
             Instantiate(_magicAttackPrefab, newTargetPosition, _magicAttackPrefab.transform.rotation);

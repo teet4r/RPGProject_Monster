@@ -1011,10 +1011,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 50
+  _invincibleTime: 0.7
   data: {fileID: 11400000, guid: a286ad9a1a16d8a478dcf7cf13c23602, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: b2ce18c46ad55a649bb23878cb7df788, type: 3}
   - {fileID: 7400000, guid: 36d296f65eb62d44badfe6185563c2aa, type: 3}
+  _dieClip: {fileID: 7400000, guid: 7a1757c32fec69643811291ee8094352, type: 3}
 --- !u!114 &954960381
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47451,7 +47451,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -91695,7 +91695,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 3
+    radiusScale: 1.2
     collidesWith:
       serializedVersion: 2
       m_Bits: 192
@@ -91712,15 +91712,10 @@ ParticleSystem:
     outside: 0
     enter: 2
     exit: 0
-    colliderQueryMode: 0
-    radiusScale: 1.5
+    colliderQueryMode: 1
+    radiusScale: 1
     primitives:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 4511100218886888}
   SubModule:
     serializedVersion: 2
     enabled: 1

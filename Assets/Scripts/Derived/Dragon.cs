@@ -11,12 +11,6 @@ public class Dragon : NormalMonsterObject
         _attackPatterns.Add(GetComponent<DragonPattern1>());
         _attackPatterns.Add(GetComponent<DragonPattern2>());
     }
-    protected override void _Die()
-    {
-        base._Die();
-
-        //gameObject.SetActive(false);
-    }
     protected override IEnumerator _Attack()
     {
         isAttacking = true;

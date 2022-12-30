@@ -10,12 +10,6 @@ public class BlackKnightBoss : BossMonsterObject
 
         _attackPatterns.Add(GetComponent<BlackKnightPattern1>());
     }
-    protected override void _Die()
-    {
-        base._Die();
-
-        //gameObject.SetActive(false);
-    }
     protected override IEnumerator _Attack()
     {
         // 플레이어 자리 쳐다보기

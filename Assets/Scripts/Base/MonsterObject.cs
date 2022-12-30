@@ -15,8 +15,10 @@ using UnityEngine.AI;
 public abstract class MonsterObject : LifeObject
 {
     #region Unity Messages
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _bodyCollider = GetComponent<Collider>();
         _rigidbody = GetComponent<Rigidbody>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -93,7 +95,8 @@ public abstract class MonsterObject : LifeObject
         isAttackable = false;
 
         _bodyCollider.enabled = false;
-        _animator.SetTrigger(AnimatorID.Trigger.Die);
+
+        StartCoroutine(_DieAnimation());
     }
     protected virtual void _Move()
     {
@@ -132,8 +135,17 @@ public abstract class MonsterObject : LifeObject
     protected abstract void _RushToTarget();
     protected abstract IEnumerator _Attack();
     #endregion
+    #region Private Methods
+    IEnumerator _DieAnimation()
+    {
+        _animator.SetTrigger(AnimatorID.Trigger.Die);
+        yield return new WaitForSeconds(_dieClip.length);
+        gameObject.SetActive(false);
+    }
+    #endregion
 
     #region Public Variables
+    public Player target { get; protected set; } = null; // 몬스터가 따라갈 대상
     public bool hasTarget { get { return target != null && target.isAlive; } }
     public bool isRecognized { get; protected set; } // 플레이어가 시야에 들어올 때
     public bool isAttackable { get; protected set; } // 공격 가능할 때
@@ -141,8 +153,8 @@ public abstract class MonsterObject : LifeObject
     public MonsterData data = null; // 몬스터 데이터 컨테이너
     #endregion
     #region Protected Variables
-    protected Player target = null; // 몬스터가 따라갈 대상
     [SerializeField] protected AnimationClip[] _attackClips;
+    [SerializeField] protected AnimationClip _dieClip;
     protected Collider _bodyCollider = null;
     protected Animator _animator = null;
     protected NavMeshAgent _navMeshAgent = null;

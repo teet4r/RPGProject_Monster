@@ -8,10 +8,16 @@ using UnityEngine;
 /// </summary>
 public class LifeObject : MonoBehaviour
 {
+    #region Unity Messages
+    protected virtual void Awake()
+    {
+        _wfs_invincible = new WaitForSeconds(_invincibleTime);
+    }
     protected virtual void OnEnable()
     {
         isAlive = true;
         isWalking = false;
+        isInvincible = false;
         curHp = maxHp;
 
         _prevPos = transform.position;
@@ -22,6 +28,7 @@ public class LifeObject : MonoBehaviour
 
         _UpdateStates();
     }
+    #endregion
     public virtual void Heal(float healAmount)
     {
         if (!isAlive) return;
@@ -31,10 +38,9 @@ public class LifeObject : MonoBehaviour
     public virtual void GetDamage(float damageAmount)
     {
         if (!isAlive) return;
+        if (isInvincible) return;
 
-        curHp -= damageAmount;
-        if (curHp <= 0f)
-            _Die();
+        StartCoroutine(_TriggerGetDamage(damageAmount));
     }
     protected virtual void _Die()
     {
@@ -42,18 +48,35 @@ public class LifeObject : MonoBehaviour
 
         isAlive = false;
         isWalking = false;
-        curHp = 0;
+        isInvincible = false;
+
+        curHp = 0f;
     }
     protected virtual void _UpdateStates()
     {
         isWalking = transform.position - _prevPos == Vector3.zero ? false : true;
         _prevPos = transform.position;
     }
+    IEnumerator _TriggerGetDamage(float damage)
+    {
+        isInvincible = true;
+
+        curHp -= damage;
+        if (curHp <= 0f)
+            _Die();
+
+        yield return _wfs_invincible;
+        isInvincible = false;
+    }
 
     public bool isAlive { get; private set; }
     public bool isWalking { get; private set; }
+    public bool isInvincible { get; protected set; }
     public float maxHp { get { return _maxHp; } }
     public float curHp { get; protected set; }
     [SerializeField] protected float _maxHp = 50f;
+    [Tooltip("피격 후 무적 시간")]
+    [SerializeField] float _invincibleTime = 0.5f;
+    WaitForSeconds _wfs_invincible = null;
     Vector3 _prevPos;
 }

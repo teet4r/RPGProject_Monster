@@ -267,9 +267,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 50
+  _invincibleTime: 0.7
   data: {fileID: 11400000, guid: 9ca3ca40fe7923b41bfb6b8eed730d7b, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 99760db3bf3782f43b0e386735164cbe, type: 3}
+  _dieClip: {fileID: 7400000, guid: d6d4ae5cdee4489408fa6c6e856f5c28, type: 3}
 --- !u!1 &2219292830553907879
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2219292830553816751}
   - component: {fileID: 2388605035107940160}
-  - component: {fileID: 3712382193200409471}
+  - component: {fileID: 1912881857736534658}
   m_Layer: 0
   m_Name: UpperTeethCTRL
   m_TagString: Untagged
@@ -950,7 +952,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: -0.12}
---- !u!114 &3712382193200409471
+--- !u!114 &1912881857736534658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -959,7 +961,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2219292830553907919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 301464fbeb02e4d4ebe121b3c6111617, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a43f0d80cab92e4988f0d6333130fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 316559666}

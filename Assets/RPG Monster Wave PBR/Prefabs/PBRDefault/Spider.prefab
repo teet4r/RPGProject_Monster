@@ -823,9 +823,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 50
+  _invincibleTime: 0.7
   data: {fileID: 11400000, guid: 729bb1e57284acb42bf89538b16b9151, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 92f894feadc811142bbd1b840c870141, type: 3}
+  _dieClip: {fileID: 7400000, guid: b6eeb1d7ff7bad940a8fc826ae937c14, type: 3}
 --- !u!1 &1574160754023944
 GameObject:
   m_ObjectHideFlags: 0

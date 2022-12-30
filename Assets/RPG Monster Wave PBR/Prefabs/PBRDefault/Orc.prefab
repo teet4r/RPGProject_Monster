@@ -1816,7 +1816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4240512476921092
 Transform:
   m_ObjectHideFlags: 0
@@ -1919,10 +1919,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHp: 50
+  _invincibleTime: 0.7
   data: {fileID: 11400000, guid: 28382fd154ca11c41a04d51f1a846632, type: 2}
   _attackClips:
   - {fileID: 7400000, guid: 40eb9b47183826f4fa53a59d46229f6d, type: 3}
   - {fileID: 7400000, guid: 1cfb9aa7426cdbb4b9946fd41a9b1c0f, type: 3}
+  _dieClip: {fileID: 7400000, guid: f8c90f47a8826ed4eb6cfd9d24b805bf, type: 3}
 --- !u!1 &1802723691041012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,6 +2029,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4989281392348066}
+  - component: {fileID: 1301450080}
+  - component: {fileID: 1301450079}
   m_Layer: 0
   m_Name: Weapon01
   m_TagString: Untagged
@@ -2049,6 +2053,33 @@ Transform:
   m_Father: {fileID: 4286446954050322}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1301450080
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873820354911316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.85
+  m_Direction: 0
+  m_Center: {x: -0.015, y: -0.02, z: 2.02}
+--- !u!114 &1301450079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873820354911316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a43f0d80cab92e4988f0d6333130fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 792653519}
 --- !u!1 &1885057381885420
 GameObject:
   m_ObjectHideFlags: 0

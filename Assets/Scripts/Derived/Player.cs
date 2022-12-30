@@ -5,19 +5,11 @@ using UnityEngine;
 public class Player : LifeObject
 {
     #region Unity Messages
-    void Awake()
+    protected override void Awake()
     {
-        _movementController = GetComponent<MovementController>();
-    }
-    protected override void OnEnable()
-    {
-        base.OnEnable();
+        base.Awake();
 
-        _isInvincible = false;
-    }
-    void Start()
-    {
-        _wfs_invincible = new WaitForSeconds(_invincibleTime);
+        _movementController = GetComponent<MovementController>();
     }
     protected override void Update()
     {
@@ -35,38 +27,19 @@ public class Player : LifeObject
         if (other.TryGetComponent(out AttackCollider attackCollider))
             GetDamage(attackCollider.parent.data.damage);
     }
-    #endregion
-    public override void GetDamage(float damageAmount)
+    void OnParticleCollision(GameObject other)
     {
-        if (!isAlive) return;
-        if (_isInvincible) return;
-
-        StartCoroutine(_TriggerGetDamage(damageAmount));
+        if (other.TryGetComponent(out MagicAttack magicAttack))
+            GetDamage(magicAttack.damage);
     }
+    #endregion
 
     protected override void _Die()
     {
         base._Die();
 
-        _isInvincible = false;
-
         gameObject.SetActive(false);
     }
     
-    IEnumerator _TriggerGetDamage(float damage)
-    {
-        _isInvincible = true;
-
-        curHp -= damage;
-        if (curHp <= 0f)
-            _Die();
-
-        yield return _wfs_invincible;
-        _isInvincible = false;
-    }
-
-    [SerializeField] float _invincibleTime = 1f;
     MovementController _movementController = null;
-    WaitForSeconds _wfs_invincible;
-    bool _isInvincible;
 }

@@ -14,13 +14,18 @@ public class MagicAttack : MonoBehaviour
     void OnEnable()
     {
         _particleSystem.Play();     // ÀÌÆåÆ® Àç»ý
-    }
-    void OnParticleCollision(GameObject other)
-    {
-        if (other.TryGetComponent(out Player player))
-            player.GetDamage(damage);
+
+        var psCollision = _particleSystem.collision;
+        psCollision.collidesWith = 0;
+        for (int i = 0; i < collidesWithLayers.Length; i++)
+            psCollision.collidesWith |= LayerMask.NameToLayer(collidesWithLayers[i]);
     }
 
     public float damage = 10f;
     protected ParticleSystem _particleSystem; // ÀÌÆåÆ® ÄÄÆ÷³ÍÆ®
+    string[] collidesWithLayers =
+    {
+        "Player",
+        "Ground"
+    };
 }
