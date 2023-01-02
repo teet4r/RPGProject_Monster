@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class EvilMagePattern1 : MonoBehaviour, IAttackPattern
 {
-    public void Attack(Vector3 targetPosition)
+    public void Attack(Transform targetTransform)
     {
-        StartCoroutine(_Attack(targetPosition));
+        StartCoroutine(_Attack(targetTransform));
     }
 
-    IEnumerator _Attack(Vector3 targetPosition)
+    IEnumerator _Attack(Transform targetTransform)
     {
         yield return _effectDelayTime;
         for (int i = 0; i < _explosionCount; i++)
         {
-            var newTargetPos = new Vector3(targetPosition.x + Random.Range(-3.5f, 3.5f), 0f, targetPosition.z + Random.Range(-3.5f, 3.5f));
+            var newTargetPos = new Vector3(
+                targetTransform.position.x,
+                0f,
+                targetTransform.position.z
+            );
             var newMyEuler = new Vector3(_magicAttackPrefab.transform.eulerAngles.x, Random.Range(0f, 360f), _magicAttackPrefab.transform.eulerAngles.z);
+            yield return _attackRate;
             var clone = Instantiate(_magicAttackPrefab, newTargetPos, _magicAttackPrefab.transform.rotation);
             clone.transform.eulerAngles = newMyEuler;
-            yield return _attackRate;
         }
     }
 
     [SerializeField] GameObject _magicAttackPrefab;
     [SerializeField] int _explosionCount = 5;
     WaitForSeconds _effectDelayTime = new WaitForSeconds(0.5f);
-    WaitForSeconds _attackRate = new WaitForSeconds(0.15f);
+    WaitForSeconds _attackRate = new WaitForSeconds(0.3f);
 }

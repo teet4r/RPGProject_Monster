@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _magicAttackPrefab: {fileID: 1839445213900760, guid: a91a44d8fe830874cb776823c2ba3e9f, type: 3}
-  _meteorCount: 12
+  _meteorCount: 3
 --- !u!114 &601801131195887082
 MonoBehaviour:
   m_ObjectHideFlags: 0

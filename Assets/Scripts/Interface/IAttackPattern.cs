@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAttackPattern
 {
-    void Attack(Vector3 targetPosition);
+    void Attack(Transform targetTransform);
 }

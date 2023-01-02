@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BlackKnightPattern1 : MonoBehaviour, IAttackPattern
 {
-    public void Attack(Vector3 targetPosition)
+    public void Attack(Transform targetTransform)
     {
-        StartCoroutine(_Attack(targetPosition));
+        StartCoroutine(_Attack(targetTransform));
     }
 
-    IEnumerator _Attack(Vector3 targetPosition)
+    IEnumerator _Attack(Transform targetTransform)
     {
         yield return _effectDelayTime;
+        var targetPosition = targetTransform.position;
         targetPosition.x = 0f;
         targetPosition.y = 0f;
         targetPosition.z = 2.8f;

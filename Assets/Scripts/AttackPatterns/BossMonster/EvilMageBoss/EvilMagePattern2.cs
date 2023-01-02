@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class EvilMagePattern2 : MonoBehaviour, IAttackPattern
 {
-    public void Attack(Vector3 targetPosition)
+    public void Attack(Transform targetTransform)
     {
-        StartCoroutine(_Attack(targetPosition));
+        StartCoroutine(_Attack(targetTransform));
     }
 
-    IEnumerator _Attack(Vector3 targetPosition)
+    IEnumerator _Attack(Transform targetTransform)
     {
         yield return _effectDelayTime;
+        var targetPosition = targetTransform.position;
         targetPosition.y = 0f;
         for (int i = 0; i < _FlameCount; i++)
         {
-            Instantiate(_magicAttackPrefab, targetPosition, _magicAttackPrefab.transform.rotation);
             yield return _attackRate;
+            Instantiate(_magicAttackPrefab, targetPosition, _magicAttackPrefab.transform.rotation);
         }
     }
 

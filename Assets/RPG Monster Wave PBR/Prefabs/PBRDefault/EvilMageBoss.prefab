@@ -567,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _magicAttackPrefab: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
-  _explosionCount: 5
+  _explosionCount: 3
 --- !u!114 &1060558994
 MonoBehaviour:
   m_ObjectHideFlags: 0

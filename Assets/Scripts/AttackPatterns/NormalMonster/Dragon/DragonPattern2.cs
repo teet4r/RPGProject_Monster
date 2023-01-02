@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DragonPattern2 : MonoBehaviour, IAttackPattern
 {
-    public void Attack(Vector3 targetPosition)
+    public void Attack(Transform targetTransform)
     {
-        StartCoroutine(_Attack(targetPosition));
+        StartCoroutine(_Attack(targetTransform));
     }
 
-    IEnumerator _Attack(Vector3 targetPosition)
+    IEnumerator _Attack(Transform targetTransform)
     {
         yield return _effectDelayTime;
         for (int i = 0; i < _fireBreathCount; i++)

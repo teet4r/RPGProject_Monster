@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GolemPattern2 : MonoBehaviour, IAttackPattern
 {
-    public void Attack(Vector3 targetPosition)
+    public void Attack(Transform targetTransform)
     {
-        StartCoroutine(_Attack(targetPosition));
+        StartCoroutine(_Attack(targetTransform));
     }
 
-    IEnumerator _Attack(Vector3 targetPosition)
+    IEnumerator _Attack(Transform targetTransform)
     {
         yield return _effectDelayTime;
-        var newTargetPosition = new Vector3(targetPosition.x, targetPosition.y + 15f, targetPosition.z);
+        var newTargetPosition = new Vector3(
+            targetTransform.position.x,
+            targetTransform.position.y + 15f,
+            targetTransform.position.z
+        );
         for (int i = 0; i < _knivesCount; i++)
         {
             Instantiate(_magicAttackPrefab, newTargetPosition, _magicAttackPrefab.transform.rotation);

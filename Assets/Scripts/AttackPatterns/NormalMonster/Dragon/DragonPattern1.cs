@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class DragonPattern1 : MonoBehaviour, IAttackPattern
 {
-    public void Attack(Vector3 targetPosition) { }
+    public void Attack(Transform targetTransform) { }
 }
