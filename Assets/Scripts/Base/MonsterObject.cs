@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +15,6 @@ using UnityEngine.AI;
 #endregion
 public abstract class MonsterObject : LifeObject
 {
-    #region Unity Messages
     protected override void Awake()
     {
         base.Awake();
@@ -57,21 +57,23 @@ public abstract class MonsterObject : LifeObject
 
         _animator.SetBool(AnimatorID.Bool.IsWalking, isWalking);
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Player player))
+            GetDamage(25f);
+    }
     void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out Player player))
             player.GetDamage(data.damage);
     }
-    #endregion
-    #region Public Methods
+
     public override void GetDamage(float damageAmount)
     {
         base.GetDamage(damageAmount);
 
         _animator.SetTrigger(AnimatorID.Trigger.Hit);
     }
-    #endregion
-    #region Protected Methods
     protected override void _UpdateStates()
     {
         base._UpdateStates();
@@ -94,12 +96,20 @@ public abstract class MonsterObject : LifeObject
         isRecognized = false;
         isAttackable = false;
 
+        _navMeshAgent.isStopped = true;
+        if (_patrolCor != null)
+        {
+            StopCoroutine(_patrolCor);
+            _patrolCor = null;
+        }
         _bodyCollider.enabled = false;
 
-        StartCoroutine(_DieAnimation());
+        StartCoroutine(_DieRoutine());
     }
     protected virtual void _Move()
     {
+        if (!isAlive) return;
+
         if (isRecognized)
         {
             if (_patrolCor != null)
@@ -134,35 +144,26 @@ public abstract class MonsterObject : LifeObject
     }
     protected abstract void _RushToTarget();
     protected abstract IEnumerator _Attack();
-    #endregion
-    #region Private Methods
-    IEnumerator _DieAnimation()
+    IEnumerator _DieRoutine()
     {
         _animator.SetTrigger(AnimatorID.Trigger.Die);
-        yield return new WaitForSeconds(_dieClip.length);
-        gameObject.SetActive(false);
+        yield return new WaitForSeconds(_destroyTime);
+        Destroy(gameObject);
     }
-    #endregion
 
-    #region Public Variables
     public Player target { get; protected set; } = null; // 몬스터가 따라갈 대상
     public bool hasTarget { get { return target != null && target.isAlive; } }
     public bool isRecognized { get; protected set; } // 플레이어가 시야에 들어올 때
     public bool isAttackable { get; protected set; } // 공격 가능할 때
     public bool isAttacking { get; protected set; } // 공격 중일 때 true
     public MonsterData data = null; // 몬스터 데이터 컨테이너
-    #endregion
-    #region Protected Variables
     [SerializeField] protected AnimationClip[] _attackClips;
-    [SerializeField] protected AnimationClip _dieClip;
+    [SerializeField] protected float _destroyTime = 5f;
     protected Collider _bodyCollider = null;
     protected Animator _animator = null;
     protected NavMeshAgent _navMeshAgent = null;
     protected Rigidbody _rigidbody = null;
     protected Coroutine _patrolCor = null;
     protected Coroutine _attackCor = null;
-    #endregion
-    #region Private Variables
     float _prevAttackTime = 0f;
-    #endregion
 }

@@ -8,7 +8,6 @@ using UnityEngine;
 /// </summary>
 public class LifeObject : MonoBehaviour
 {
-    #region Unity Messages
     protected virtual void Awake()
     {
         _wfs_invincible = new WaitForSeconds(_invincibleTime);
@@ -28,7 +27,7 @@ public class LifeObject : MonoBehaviour
 
         _UpdateStates();
     }
-    #endregion
+
     public virtual void Heal(float healAmount)
     {
         if (!isAlive) return;
