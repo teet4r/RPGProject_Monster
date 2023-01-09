@@ -1376,7 +1376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4191744185429214
 Transform:
   m_ObjectHideFlags: 0
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   _attackClips:
   - {fileID: 7400000, guid: 2ef6cb7532e592941815ddab649c1787, type: 3}
   - {fileID: 7400000, guid: 014713eb1e7756d47b218c3f15bf75cc, type: 3}
-  _dieClip: {fileID: 7400000, guid: 8f9f4a1f0b241aa46a78c5812ef85dd4, type: 3}
+  _destroyTime: 5
 --- !u!114 &1732014794
 MonoBehaviour:
   m_ObjectHideFlags: 0

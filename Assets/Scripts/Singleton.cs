@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    public T Instance
+    protected void Awake()
+    {
+        if (_instance == null)
+            _instance = this as T;
+        else if (_instance != this)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject);
+    }
+
+    public static T Instance
     {
         get
         {
@@ -16,7 +26,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     var newObj = new GameObject();
                     _instance = newObj.AddComponent<T>();
                     newObj.name = typeof(T).ToString();
-                    DontDestroyOnLoad(gameObject);
                 }
             }
             return _instance;

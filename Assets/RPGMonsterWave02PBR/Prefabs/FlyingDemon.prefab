@@ -2419,7 +2419,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: f1215d1da80e73742bb8644ca6575b27, type: 3}
   - {fileID: 7400000, guid: ee11940de27a90b44ab44632264d0868, type: 3}
   - {fileID: 7400000, guid: a2d477b58d4c1ec49b637188071d664d, type: 3}
-  _dieClip: {fileID: 7400000, guid: 7ac8b0e372feb814a9efc2c3fe431120, type: 3}
+  _destroyTime: 5
 --- !u!1 &3891923349452443984
 GameObject:
   m_ObjectHideFlags: 0

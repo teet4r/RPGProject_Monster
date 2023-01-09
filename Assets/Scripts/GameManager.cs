@@ -12,6 +12,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(_FindPlayer());
+        StartCoroutine(_MakeMonsters());
+    }
+
+    IEnumerator _MakeMonsters()
+    {
+        while (true)
+        {
+            var objs = ObjectPool.instance.GetRandoms(2);
+            for (int i = 0; i < objs.Count; i++)
+            {
+                objs[i].transform.position = Vector3.zero;
+                objs[i].SetActive(true);
+                yield return new WaitForSeconds(1f);
+            }
+        }
     }
 
     IEnumerator _FindPlayer()

@@ -636,7 +636,7 @@ MonoBehaviour:
   _attackClips:
   - {fileID: 7400000, guid: c4462e8265da5a84596f0b3676fbbe66, type: 3}
   - {fileID: 7400000, guid: 08352041a2844e345953872d9f715a3d, type: 3}
-  _dieClip: {fileID: 7400000, guid: 4a4726a23da5f1a4098bb77188ae3549, type: 3}
+  _destroyTime: 5
 --- !u!1 &5785497811905594083
 GameObject:
   m_ObjectHideFlags: 0

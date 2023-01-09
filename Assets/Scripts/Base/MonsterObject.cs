@@ -28,7 +28,6 @@ public abstract class MonsterObject : LifeObject
     {
         base.OnEnable();
 
-        isRecognized = false;
         isAttackable = false;
         isAttacking = false;
 
@@ -78,7 +77,6 @@ public abstract class MonsterObject : LifeObject
     {
         base._UpdateStates();
 
-        isRecognized = hasTarget && Vector3.Distance(target.transform.position, transform.position) <= data.recognitionDistance;
         if (hasTarget &&
             Vector3.Distance(target.transform.position, transform.position) <= data.stoppingDistance + 1f &&
             Time.time - _prevAttackTime >= data.attackRate)
@@ -93,7 +91,6 @@ public abstract class MonsterObject : LifeObject
     {
         base._Die();
 
-        isRecognized = false;
         isAttackable = false;
 
         _navMeshAgent.isStopped = true;
@@ -152,8 +149,14 @@ public abstract class MonsterObject : LifeObject
     }
 
     public Player target { get; protected set; } = null; // 몬스터가 따라갈 대상
-    public bool hasTarget { get { return target != null && target.isAlive; } }
-    public bool isRecognized { get; protected set; } // 플레이어가 시야에 들어올 때
+    public bool hasTarget
+    {
+        get { return target != null && target.isAlive; }
+    }
+    public bool isRecognized
+    {
+        get { return hasTarget && Vector3.Distance(target.transform.position, transform.position) <= data.recognitionDistance; }
+    } // 플레이어가 시야에 들어올 때
     public bool isAttackable { get; protected set; } // 공격 가능할 때
     public bool isAttacking { get; protected set; } // 공격 중일 때 true
     public MonsterData data = null; // 몬스터 데이터 컨테이너

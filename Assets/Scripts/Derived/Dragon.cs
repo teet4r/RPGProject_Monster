@@ -21,7 +21,7 @@ public class Dragon : NormalMonsterObject
         
         yield return new WaitForSeconds(_attackClips[idx].length + 1f);
 
-        _navMeshAgent.destination = target.transform.position;
+        _navMeshAgent.destination = hasTarget ? target.transform.position : transform.position;
         isAttacking = false;
         _attackCor = null;
     }

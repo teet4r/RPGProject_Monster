@@ -569,4 +569,4 @@ MonoBehaviour:
   _attackClips:
   - {fileID: 7400000, guid: 438236b1bb4dc03468cb3f2d12fa922c, type: 3}
   - {fileID: 7400000, guid: 8254c95c1caa1da4cb1d22972c413dad, type: 3}
-  _dieClip: {fileID: 7400000, guid: f76b9b823f2fc9a469d0c2c780514380, type: 3}
+  _destroyTime: 5
