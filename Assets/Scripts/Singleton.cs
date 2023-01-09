@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    protected void Awake()
+    protected virtual void Awake()
     {
         if (_instance == null)
             _instance = this as T;
         else if (_instance != this)
             Destroy(gameObject);
-        else
-            DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public static T Instance
@@ -20,7 +19,11 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<T>();
+                var instances = FindObjectsOfType<T>();
+                for (int i = 0; i < instances.Length; i++)
+                    if (instances[i] == _instance)
+                        return _instance = instances[i];
+
                 if (_instance == null)
                 {
                     var newObj = new GameObject();

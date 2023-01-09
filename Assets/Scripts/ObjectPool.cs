@@ -18,8 +18,6 @@ public class ObjectPool : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
 
         for (int i = 0; i < _prefabs.Length; i++)
         {
@@ -31,7 +29,7 @@ public class ObjectPool : MonoBehaviour
             _qDictionary.Add(prefabName, new Queue<GameObject>());
             for (int j = 0; j < _initialCount; j++)
             {
-                var clone = Instantiate(_prefabs[i]);
+                var clone = Instantiate(_prefabs[i], transform);
                 clone.name = prefabName;
                 clone.SetActive(false);
                 _qDictionary[prefabName].Enqueue(clone);
@@ -49,7 +47,7 @@ public class ObjectPool : MonoBehaviour
 
         if (_qDictionary[_prefabs[prefabIndex].name].Count == 0)
         {
-            var clone = Instantiate(_prefabs[prefabIndex]);
+            var clone = Instantiate(_prefabs[prefabIndex], transform);
             clone.name = _prefabs[prefabIndex].name;
             clone.SetActive(false);
             return clone;
@@ -67,7 +65,7 @@ public class ObjectPool : MonoBehaviour
 
         if (_qDictionary[prefabName].Count == 0)
         {
-            var clone = Instantiate(_dictionary[prefabName]);
+            var clone = Instantiate(_dictionary[prefabName], transform);
             clone.name = prefabName;
             clone.SetActive(false);
             return clone;
